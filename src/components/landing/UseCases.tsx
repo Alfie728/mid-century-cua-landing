@@ -12,7 +12,7 @@ const USE_CASES = [
 
 export function UseCases() {
   return (
-    <section className="py-24 bg-slate-50 border-y border-slate-100">
+    <section className="py-24">
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-12">
           <div className="md:w-1/3">

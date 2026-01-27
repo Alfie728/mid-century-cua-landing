@@ -24,12 +24,14 @@ const EXAMPLES = [
   }
 ];
 
+import { BackgroundBlobs } from "@/components/ui/BackgroundBlobs";
+
 export function ExampleCards() {
   return (
-    <section className="py-24 bg-white">
-      <div className="container mx-auto px-6 max-w-6xl">
+    <section className="py-24 relative overflow-hidden">
+      <div className="container mx-auto px-6 max-w-6xl relative z-10">
         <div className="mb-16 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Works with anything</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">Works with anything</h2>
           <p className="text-xl text-slate-600">From terminal to browser, legacy to bleeding edge.</p>
         </div>
 
@@ -41,13 +43,16 @@ export function ExampleCards() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="p-8 rounded-3xl bg-slate-50 border border-slate-100 text-center hover:shadow-lg transition-all hover:-translate-y-1"
+              className="p-8 rounded-3xl bg-white/60 backdrop-blur-md border border-slate-100 text-center hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 group relative overflow-hidden"
             >
-              <div className={`w-16 h-16 rounded-2xl mx-auto flex items-center justify-center mb-6 ${item.color}`}>
-                <item.icon className="w-8 h-8" />
+              <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent pointer-events-none" />
+              <div className="relative z-10">
+                <div className={`w-16 h-16 rounded-2xl mx-auto flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 shadow-sm ${item.color}`}>
+                  <item.icon className="w-8 h-8" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
+                <p className="text-slate-600 leading-relaxed font-medium">{item.examples}</p>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
-              <p className="text-slate-600 leading-relaxed font-medium">{item.examples}</p>
             </motion.div>
           ))}
         </div>

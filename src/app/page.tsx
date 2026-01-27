@@ -1,16 +1,20 @@
-import { Hero } from "@/components/landing/Hero";
-import { SocialProof } from "@/components/landing/SocialProof";
-import { Features } from "@/components/landing/Features";
 import { Audience } from "@/components/landing/Audience";
-import { Products } from "@/components/landing/Products";
-import { Process } from "@/components/landing/Process";
 import { Differentiators } from "@/components/landing/Differentiators";
-import { UseCases } from "@/components/landing/UseCases";
 import { ExampleCards } from "@/components/landing/ExampleCards";
+import { Features } from "@/components/landing/Features";
+import { Hero } from "@/components/landing/Hero";
+import { Process } from "@/components/landing/Process";
+import { Products } from "@/components/landing/Products";
+import { SocialProof } from "@/components/landing/SocialProof";
+import { UseCases } from "@/components/landing/UseCases";
+
+import { InteractiveGridPattern } from "~/components/ui/interactive-grid-pattern";
+import { cn } from "~/lib/utils";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col bg-white">
+    <main className="min-h-screen relative bg-slate-50 isolate overflow-hidden">
+      {/* Global Background Elements */}
       <Hero />
       <SocialProof />
       <Features />

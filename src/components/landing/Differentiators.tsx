@@ -31,12 +31,15 @@ const DIFFERENTIATORS = [
   }
 ];
 
+import { BackgroundBlobs } from "@/components/ui/BackgroundBlobs";
+
 export function Differentiators() {
   return (
-    <section className="py-24 bg-white">
-      <div className="container mx-auto px-6 max-w-6xl">
+    <section className="py-24 relative overflow-hidden">
+
+      <div className="container mx-auto px-6 max-w-6xl relative z-10">
         <div className="mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Key differentiators</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">Key differentiators</h2>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -47,9 +50,9 @@ export function Differentiators() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group p-6 rounded-2xl border border-slate-100 bg-white hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1 hover:border-blue-100 transition-all duration-300"
+              className="group p-6 rounded-2xl border border-white/50 bg-white/60 backdrop-blur-md shadow-sm hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1 hover:bg-white hover:border-blue-100 transition-all duration-300"
             >
-              <div className="mb-4 w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+              <div className="mb-4 w-12 h-12 rounded-xl bg-white shadow-sm border border-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300">
                 <item.icon className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-slate-900 mb-2">{item.title}</h3>

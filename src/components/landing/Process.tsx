@@ -28,7 +28,7 @@ const STEPS = [
 
 export function Process() {
   return (
-    <section className="py-24 bg-slate-50">
+    <section className="py-24">
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">How it works</h2>

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 export function Products() {
   return (
-    <section className="py-32 bg-slate-50 relative overflow-hidden">
+    <section className="py-32 relative overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
 
         <div className="mb-20">
