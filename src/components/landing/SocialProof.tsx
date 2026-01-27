@@ -1,14 +1,14 @@
-import { Marquee } from "@/components/ui/marquee";
-import { cn } from "@/lib/utils";
 import {
   Bot,
-  Workflow,
-  Globe,
   Building2,
-  FlaskConical,
   Compass,
-  Monitor
+  FlaskConical,
+  Globe,
+  Monitor,
+  Workflow,
 } from "lucide-react";
+import { Marquee } from "@/components/ui/marquee";
+import { cn } from "@/lib/utils";
 
 const TEAMS = [
   { name: "UI Agents", icon: Bot },
@@ -17,8 +17,11 @@ const TEAMS = [
   { name: "Enterprise RPA", icon: Building2 },
   { name: "Frontier Labs", icon: FlaskConical },
   { name: "Web Voyagers", icon: Compass },
-  { name: "Desktop Automation", icon: Monitor }
+  { name: "Desktop Automation", icon: Monitor },
 ];
+
+const firstRow = TEAMS.slice(0, Math.ceil(TEAMS.length / 2));
+const secondRow = TEAMS.slice(Math.ceil(TEAMS.length / 2));
 
 const TeamCard = ({
   name,
@@ -30,19 +33,19 @@ const TeamCard = ({
   return (
     <figure
       className={cn(
-        "relative w-64 cursor-default overflow-hidden rounded-xl p-4",
+        "relative w-64 cursor-default overflow-hidden rounded-xl p-4 transition-all duration-300",
         // light styles
-        "bg-gray-950/5 hover:bg-gray-950/5",
+        "bg-gray-950/5 hover:bg-gray-950/10",
         // dark styles
-        "dark:bg-gray-50/10 dark:hover:bg-gray-50/15"
+        "dark:bg-gray-50/10 dark:hover:bg-gray-50/15",
       )}
     >
-      <div className="flex flex-row items-center gap-3">
-        <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-black/5 dark:bg-white/10">
+      <div className="flex flex-row items-center gap-4">
+        <div className="flex shrink-0 items-center justify-center w-10 h-10 rounded-lg bg-black/5 dark:bg-white/10">
           <Icon className="w-5 h-5 opacity-70" />
         </div>
         <div className="flex flex-col">
-          <figcaption className="text-sm font-medium dark:text-white">
+          <figcaption className="text-sm font-semibold text-slate-700 dark:text-white">
             {name}
           </figcaption>
         </div>
@@ -60,19 +63,22 @@ export function SocialProof() {
         </p>
       </div>
 
-      <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-        <Marquee
-          pauseOnHover
-          className="[--duration:40s]"
-        >
-          {TEAMS.map((team) => (
+      <div className="relative flex w-full flex-col items-center justify-center gap-4 overflow-hidden">
+        <Marquee pauseOnHover className="[--duration:20s]">
+          {firstRow.map((team) => (
+            <TeamCard key={team.name} {...team} />
+          ))}
+        </Marquee>
+
+        <Marquee reverse pauseOnHover className="[--duration:20s]">
+          {secondRow.map((team) => (
             <TeamCard key={team.name} {...team} />
           ))}
         </Marquee>
 
         {/* Gradient Masks */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-linear-to-r from-white via-white/50 to-transparent dark:from-background"></div>
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-linear-to-l from-white via-white/50 to-transparent dark:from-background"></div>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-linear-to-r from-[#FAFCFD] from-60% to-transparent dark:from-background"></div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-linear-to-l from-[#FAFCFD] from-60%  to-transparent dark:from-background"></div>
       </div>
     </section>
   );
