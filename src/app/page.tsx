@@ -8,9 +8,6 @@ import { Products } from "@/components/landing/Products";
 import { SocialProof } from "@/components/landing/SocialProof";
 import { UseCases } from "@/components/landing/UseCases";
 
-import { InteractiveGridPattern } from "~/components/ui/interactive-grid-pattern";
-import { cn } from "~/lib/utils";
-
 export default function Home() {
   return (
     <main className="min-h-screen relative bg-slate-50 isolate overflow-hidden">

@@ -1,102 +1,307 @@
 "use client";
 
-import { motion } from "motion/react";
-import { Database, Layout, Box, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Box, Database, Layout } from "lucide-react";
+import {
+  motion,
+  useSpring,
+  useMotionTemplate,
+  useInView
+} from "motion/react";
+import { useRef, useEffect } from "react";
+import {
+  AnimatedSpan,
+  Terminal,
+  TypingAnimation,
+} from "@/components/ui/terminal";
 import { cn } from "@/lib/utils";
+
+function TrainingGraph() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+
+  // Start at 100% (hidden) and animate to 0% (visible)
+  const clipPathValue = useSpring(100, { damping: 20, stiffness: 100 });
+  const clipPathTemplate = useMotionTemplate`inset(0px ${clipPathValue}% 0px 0px)`;
+
+  useEffect(() => {
+    if (isInView) {
+      // Add a small delay for dramatic effect
+      const timer = setTimeout(() => {
+        clipPathValue.set(0);
+      }, 200);
+      return () => clearTimeout(timer);
+    }
+  }, [isInView, clipPathValue]);
+
+  return (
+    <div ref={containerRef} className="w-full h-full">
+      {/* Grid Lines */}
+      <div className="absolute inset-0 flex flex-col justify-between p-4 opacity-20 pointer-events-none">
+        <div className="w-full h-px bg-slate-300" />
+        <div className="w-full h-px bg-slate-300" />
+        <div className="w-full h-px bg-slate-300" />
+        <div className="w-full h-px bg-slate-300" />
+      </div>
+
+      <motion.svg
+        className="w-full h-full overflow-visible"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        style={{ clipPath: clipPathTemplate }}
+      >
+        <defs>
+          <linearGradient id="curve-gradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#10b981" stopOpacity="0.2" />
+            <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+
+        {/* Authentic Training Data Curve (Noise + Trend) */}
+        <path
+          d="M0,90 L5,88 L10,85 L15,87 L20,82 L25,78 L30,80 L35,70 L40,65 L45,68 L50,55 L55,45 L60,48 L65,35 L70,30 L75,32 L80,20 L85,15 L90,18 L95,12 L100,10"
+          fill="none"
+          stroke="#10b981"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          vectorEffect="non-scaling-stroke"
+        />
+
+        {/* Area Fill */}
+        <path
+          d="M0,90 L5,88 L10,85 L15,87 L20,82 L25,78 L30,80 L35,70 L40,65 L45,68 L50,55 L55,45 L60,48 L65,35 L70,30 L75,32 L80,20 L85,15 L90,18 L95,12 L100,10 L100,100 L0,100 Z"
+          fill="url(#curve-gradient)"
+          stroke="none"
+        />
+      </motion.svg>
+    </div>
+  );
+}
 
 export function Products() {
   return (
-    <section className="py-32 relative overflow-hidden">
+    <section className="py-32 relative overflow-hidden font-sans">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
-
         <div className="mb-20">
-          <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 tracking-tight">Core Products</h2>
-          <p className="text-xl text-slate-500">The complete stack for computer-use agents</p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-2 mb-4"
+          >
+            <span className="px-3 py-1 rounded-full bg-blue-100/50 border border-blue-200 text-blue-700 text-xs font-mono font-medium uppercase tracking-wider backdrop-blur-sm">
+              Product Suite
+            </span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 tracking-tight font-display"
+          >
+            The complete stack <br /> for computer-use agents.
+          </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[400px]">
-
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:auto-rows-[500px]">
           {/* DATA CARD - Large Span */}
           <motion.div
-            whileHover={{ scale: 1.01 }}
-            className="md:col-span-2 rounded-[2.5rem] bg-white border border-slate-200 p-10 flex flex-col justify-between overflow-hidden relative group hover:shadow-2xl transition-all duration-500"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className=" rounded-[2.5rem] bg-white/60 border border-slate-200/80 p-10 flex flex-col justify-between overflow-hidden relative group shadow-sm hover:shadow-xl hover:border-blue-200 transition-all duration-500 backdrop-blur-xl"
           >
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50 rounded-full blur-3xl -mr-20 -mt-20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-            <div className="relative z-10">
-              <div className="p-3 bg-blue-100 w-fit rounded-2xl text-blue-600 mb-6">
+            <div className="relative z-10 mb-8">
+              <div className="p-3 bg-white w-fit rounded-2xl text-blue-600 mb-6 shadow-sm border border-slate-100">
                 <Database className="w-8 h-8" />
               </div>
-              <h3 className="text-3xl font-bold text-slate-900 mb-2">Data</h3>
-              <p className="text-slate-500 text-lg max-w-md">Trajectory capture at scale with full state tracking and ground truth labels.</p>
+              <h3 className="text-3xl font-bold text-slate-900 mb-3 font-display">
+                Data
+              </h3>
+              <p className="text-slate-500 text-lg max-w-md leading-relaxed">
+                Trajectory capture at scale with full state tracking and ground
+                truth labels.
+              </p>
             </div>
 
-            <div className="mt-8 relative h-full w-full bg-slate-50 rounded-2xl border border-slate-100 overflow-hidden flex items-center justify-center group-hover:border-blue-100 transition-colors">
-              {/* Abstract UI Representation */}
-              <div className="absolute inset-4 bg-white shadow-sm rounded-xl p-4 flex flex-col gap-3 opacity-50 group-hover:opacity-100 transition-opacity transform group-hover:translate-y-2 duration-500">
-                <div className="w-full h-4 bg-slate-100 rounded-lg animate-pulse" />
-                <div className="w-2/3 h-4 bg-slate-100 rounded-lg animate-pulse delay-100" />
-                <div className="w-full h-32 bg-blue-50/50 rounded-lg border border-blue-100 mt-2" />
+            {/* Visual: JSON Stream */}
+            <div className="relative flex-1 w-full bg-slate-50 rounded-2xl border border-slate-200/60 overflow-hidden flex flex-col shadow-inner group-hover:bg-white transition-colors">
+              <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-200/60 bg-white/50 backdrop-blur-sm">
+                <div className="flex gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-slate-300" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-slate-300" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-slate-300" />
+                </div>
+                <span className="text-xs font-mono text-slate-400 ml-2">
+                  trajectory_v4.json
+                </span>
+              </div>
+
+              <div className="p-5 font-mono text-xs md:text-sm text-slate-600 leading-relaxed overflow-hidden">
+                <div className="opacity-50">{"{"}</div>
+                <div className="pl-4">
+                  <span className="text-purple-600">"agent_id"</span>:{" "}
+                  <span className="text-emerald-600">"claude-3-opus"</span>,
+                </div>
+                <div className="pl-4">
+                  <span className="text-purple-600">"trajectory"</span>: [
+                </div>
+                <div className="pl-8 bg-blue-50/50 -mx-4 px-9 py-1 border-y border-blue-100/50">
+                  {"{"} <span className="text-purple-600">"action"</span>:{" "}
+                  <span className="text-blue-600">"click"</span>,{" "}
+                  <span className="text-purple-600">"target"</span>:{" "}
+                  <span className="text-emerald-600">"button#submit"</span>{" "}
+                  {"}"},
+                </div>
+                <div className="pl-8 py-0.5">
+                  {"{"} <span className="text-purple-600">"action"</span>:{" "}
+                  <span className="text-blue-600">"type"</span>,{" "}
+                  <span className="text-purple-600">"value"</span>:{" "}
+                  <span className="text-emerald-600">"research query"</span>{" "}
+                  {"}"},
+                </div>
+                <div className="pl-8 py-0.5">
+                  {"{"} <span className="text-purple-600">"action"</span>:{" "}
+                  <span className="text-blue-600">"scroll"</span>,{" "}
+                  <span className="text-purple-600">"y"</span>:{" "}
+                  <span className="text-orange-600">850</span> {"}"},
+                </div>
+                <div className="pl-4">],</div>
+                <div className="pl-4">
+                  <span className="text-purple-600">"reward"</span>:{" "}
+                  <span className="text-orange-600">0.985</span>
+                </div>
+                <div className="opacity-50">{"}"}</div>
               </div>
             </div>
           </motion.div>
 
-          {/* ENVIRONMENTS CARD - Tall Span */}
+          {/* ENVIRONMENTS CARD - Tall Span with Terminal */}
           <motion.div
-            whileHover={{ scale: 1.01 }}
-            className="md:row-span-2 rounded-[2.5rem] bg-slate-900 text-white p-10 flex flex-col overflow-hidden relative group hover:shadow-2xl transition-all duration-500"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="md:row-span-2 rounded-[2.5rem] bg-[#0F1117] p-10 flex flex-col overflow-hidden relative group hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-500 border border-slate-800"
           >
-            <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-indigo-900/50 to-transparent" />
+            {/* Dark Glass Effect */}
+            <div className="absolute inset-0 bg-linear-to-b from-[#0F1117] to-slate-950" />
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-indigo-500/10 rounded-full blur-[100px] opacity-100 pointer-events-none" />
 
-            <div className="relative z-10 mb-auto">
-              <div className="p-3 bg-white/10 w-fit rounded-2xl text-white mb-6 backdrop-blur-md">
+            <div className="relative z-10 mb-10">
+              <div className="p-3 bg-white/10 w-fit rounded-2xl text-white mb-6 backdrop-blur-md border border-white/10">
                 <Layout className="w-8 h-8" />
               </div>
-              <h3 className="text-3xl font-bold mb-2">Environments</h3>
-              <p className="text-slate-400 text-lg">Resettable desktop sandboxes.</p>
+              <h3 className="text-3xl font-bold text-white mb-3 font-display">
+                Environments
+              </h3>
+              <p className="text-slate-400 text-lg leading-relaxed">
+                Resettable desktop sandboxes.
+              </p>
             </div>
 
-            <div className="mt-10 relative h-[400px] w-full bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden group-hover:border-indigo-500/50 transition-colors">
-              {/* Terminal Representation */}
-              <div className="p-4 font-mono text-xs text-green-400 space-y-2">
-                <div className="typing-effect">
-                  $ start-env --os=ubuntu<br />
-                  &gt; Initializing sandbox...<br />
-                  &gt; Connecting VNC...<br />
-                  &gt; Ready.
-                </div>
-              </div>
+            {/* Magic UI Terminal */}
+            <div className="relative flex-1 w-full rounded-xl overflow-hidden shadow-2xl border border-slate-700/50 bg-[#0F1117] min-h-[500px]">
+              <Terminal className="h-full w-full bg-transparent p-6 font-mono text-sm leading-relaxed">
+                <TypingAnimation className="text-slate-200 text-base">
+                  start-env --os=ubuntu --gpu=true
+                </TypingAnimation>
+
+                <AnimatedSpan delay={1500} className="text-emerald-500">
+                  ➜ Initializing sandbox environment...
+                </AnimatedSpan>
+
+                <AnimatedSpan delay={2000} className="text-emerald-500">
+                  ➜ Mounting VNC filesystem...
+                </AnimatedSpan>
+
+                <AnimatedSpan delay={2500} className="text-blue-400">
+                  ℹ GPU acceleration enabled (RTX 4090)
+                </AnimatedSpan>
+
+                <AnimatedSpan delay={3000} className="text-slate-400">
+                  ➜ Loading generic-agent-v4...
+                </AnimatedSpan>
+
+                <AnimatedSpan delay={3500} className="text-slate-400">
+                  ➜ Setting viewport: 1920x1080
+                </AnimatedSpan>
+
+                <AnimatedSpan
+                  delay={4200}
+                  className="text-emerald-500 font-bold"
+                >
+                  ✔ Ready. Connect at port 5900.
+                </AnimatedSpan>
+
+                <AnimatedSpan delay={5000} className="text-slate-500 mt-4">
+                  $ agent run --task="book flight"
+                </AnimatedSpan>
+                <AnimatedSpan delay={5800} className="text-blue-300">
+                  &gt; Navigating to kayak.com...
+                </AnimatedSpan>
+                <AnimatedSpan delay={6500} className="text-blue-300">
+                  &gt; Selecting date: 2024-12-15
+                </AnimatedSpan>
+              </Terminal>
             </div>
 
-            <div className="mt-6 flex flex-wrap gap-2 relative z-10">
-              <span className="px-3 py-1 rounded-full bg-white/10 text-sm border border-white/5">Ubuntu</span>
-              <span className="px-3 py-1 rounded-full bg-white/10 text-sm border border-white/5">Windows 11</span>
-              <span className="px-3 py-1 rounded-full bg-white/10 text-sm border border-white/5">macOS</span>
+            <div className="mt-8 flex flex-wrap gap-2 relative z-10">
+              {["Ubuntu", "Windows 11", "macOS"].map((os) => (
+                <span
+                  key={os}
+                  className="px-3 py-1 rounded-full bg-white/5 text-slate-300 text-sm border border-white/10 hover:bg-white/10 hover:border-white/20 transition-colors cursor-default"
+                >
+                  {os}
+                </span>
+              ))}
             </div>
           </motion.div>
 
           {/* TRAINING CARD */}
           <motion.div
-            whileHover={{ scale: 1.01 }}
-            className="rounded-[2.5rem] bg-white border border-slate-200 p-10 flex flex-col justify-between overflow-hidden relative group hover:shadow-2xl transition-all duration-500"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="rounded-[2.5rem] bg-white/60 border border-slate-200/80 p-10 flex flex-col justify-between overflow-hidden relative group shadow-sm hover:shadow-xl hover:border-emerald-200 transition-all duration-500 backdrop-blur-xl"
           >
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-emerald-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute inset-0 bg-linear-to-br from-emerald-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-            <div className="relative z-10">
-              <div className="p-3 bg-emerald-100 w-fit rounded-2xl text-emerald-600 mb-6">
+            <div className="relative z-10 mb-6">
+              <div className="p-3 bg-white w-fit rounded-2xl text-emerald-600 mb-6 shadow-sm border border-slate-100">
                 <Box className="w-8 h-8" />
               </div>
-              <h3 className="text-3xl font-bold text-slate-900 mb-2">Training</h3>
-              <p className="text-slate-500 text-lg">From demo to SOTA.</p>
+              <h3 className="text-3xl font-bold text-slate-900 mb-3 font-display">
+                Training
+              </h3>
+              <p className="text-slate-500 text-lg leading-relaxed">
+                From demo to SOTA.
+              </p>
             </div>
 
-            <div className="mt-auto flex items-center justify-end">
-              <div className="w-12 h-12 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-300">
-                <ArrowUpRight className="w-6 h-6" />
+            {/* Visual: Training Curve */}
+            <div className="relative h-48 w-full mt-auto">
+              <TrainingGraph />
+
+              {/* Metrics badges */}
+              <div className="absolute -bottom-6 left-4 flex gap-3 z-10">
+                <div className="px-3 py-1 bg-white/90 rounded-lg text-xs font-mono text-slate-600 shadow-sm border border-slate-200 backdrop-blur-sm">
+                  Loss:{" "}
+                  <span className="text-emerald-600 font-bold">0.024</span>
+                </div>
+                <div className="px-3 py-1 bg-white/90 rounded-lg text-xs font-mono text-slate-600 shadow-sm border border-slate-200 backdrop-blur-sm">
+                  Success:{" "}
+                  <span className="text-emerald-600 font-bold">98.5%</span>
+                </div>
               </div>
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>
