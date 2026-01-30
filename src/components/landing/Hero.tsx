@@ -35,9 +35,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-6xl md:text-8xl font-bold tracking-tight text-slate-900 leading-[1.05]"
+          className="text-6xl md:text-8xl font-bold tracking-tight text-slate-900 leading-[1.05] font-display"
         >
-          <span className="bg-clip-text text-transparent bg-gradient-to-br from-indigo-500 to-blue-600">
+          <span className="bg-clip-text text-transparent bg-linear-to-br from-indigo-500 to-blue-600">
             cua
           </span>{" "}
           is data for
@@ -92,11 +92,27 @@ export function Hero() {
           className="mt-8 pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center gap-4 text-sm text-slate-400"
         >
           <span>Trusted by teams at</span>
-          <div className="flex gap-4 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-            {/* Micro-logos placeholders using text for now */}
-            <span className="font-bold">FrontierAI</span>
-            <span className="font-bold">AgentLab</span>
-            <span className="font-bold">AutoCorp</span>
+          <div className="flex gap-8 items-center opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+            {/* FrontierAI */}
+            <img
+              src="/frontierai.png"
+              alt="FrontierAI"
+              className="h-6 w-auto object-contain"
+            />
+
+            {/* AgentLab */}
+            <img
+              src="/agentlab-logo-small.png"
+              alt="AgentLab"
+              className="h-6 w-auto object-contain"
+            />
+
+            {/* AutoCorp */}
+            <img
+              src="/Autocorp-ai-TM-White.svg"
+              alt="AutoCorp"
+              className="h-5 w-auto object-contain invert" // Invert because the file is 'White' but background is light
+            />
           </div>
         </motion.div>
       </div>
