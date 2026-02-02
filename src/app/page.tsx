@@ -7,6 +7,7 @@ import { Process } from "@/components/landing/Process";
 import { Products } from "@/components/landing/Products";
 import { SocialProof } from "@/components/landing/SocialProof";
 import { UseCases } from "@/components/landing/UseCases";
+import { Footer } from "@/components/landing/Footer";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <Differentiators />
       <UseCases />
       <ExampleCards />
+      <Footer />
     </main>
   );
 }

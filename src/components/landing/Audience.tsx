@@ -125,7 +125,7 @@ export function Audience() {
                 />
 
                 <div className="relative z-10">
-                  <div className="h-12 w-12 bg-white rounded-xl border border-slate-200 shadow-sm flex items-center justify-center text-slate-600 mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                  <div className="h-12 w-12 bg-white rounded-xl border border-slate-200 shadow-sm flex items-center justify-center text-slate-600 mb-6 group-hover:scale-110 transition-transform duration-300">
                     <item.icon className="w-6 h-6" weight="duotone" />
                   </div>
 

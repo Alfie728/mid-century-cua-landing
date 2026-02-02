@@ -1,57 +1,93 @@
 "use client";
 
 import { motion } from "motion/react";
-import { AppWindow, Monitor, Code2 } from "lucide-react";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 const EXAMPLES = [
   {
-    icon: Monitor,
+    image: "/assets/landing/legacy-ui.png",
     title: "Legacy apps",
-    examples: "SAP • Citrix • internal admin panels • old Windows tools",
-    color: "bg-amber-100 text-amber-700"
+    examples: "SAP, Citrix, internal admin panels, Windows XP tools",
+    color: "amber"
   },
   {
-    icon: AppWindow,
-    title: "Modern apps",
-    examples: "Slack • Discord • GitHub • Amazon Seller Central • Adobe Suite",
-    color: "bg-blue-100 text-blue-700"
+    image: "/assets/landing/modern-ui.png",
+    title: "Modern SaaS",
+    examples: "Slack, Discord, GitHub, Salesforce, Adobe Suite",
+    color: "blue"
   },
   {
-    icon: Code2,
+    image: "/assets/landing/terminal-ui.png",
     title: "Custom stacks",
-    examples: "your Electron app • your ops console • your proprietary tooling",
-    color: "bg-purple-100 text-purple-700"
+    examples: "Electron apps, proprietary consoles, VNC streams",
+    color: "purple"
   }
 ];
 
-import { BackgroundBlobs } from "@/components/ui/BackgroundBlobs";
-
 export function ExampleCards() {
   return (
-    <section className="py-24 relative overflow-hidden">
-      <div className="container mx-auto px-6 max-w-6xl relative z-10">
-        <div className="mb-16 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">Works with anything</h2>
-          <p className="text-xl text-slate-600">From terminal to browser, legacy to bleeding edge.</p>
+    <section className="py-24 relative overflow-hidden font-sans">
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        <div className="mb-20 text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight font-display"
+          >
+            Works with anything
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-xl text-slate-500 font-medium"
+          >
+            From terminal to browser, legacy to bleeding edge.
+          </motion.p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {EXAMPLES.map((item, index) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="p-8 rounded-3xl bg-white/60 backdrop-blur-md border border-slate-100 text-center hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 group relative overflow-hidden"
+              className="group relative rounded-[2.5rem] bg-white border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col"
             >
-              <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent pointer-events-none" />
-              <div className="relative z-10">
-                <div className={`w-16 h-16 rounded-2xl mx-auto flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 shadow-sm ${item.color}`}>
-                  <item.icon className="w-8 h-8" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
-                <p className="text-slate-600 leading-relaxed font-medium">{item.examples}</p>
+              {/* Image Area */}
+              <div className="relative h-64 w-full overflow-hidden bg-slate-100">
+                <div className="absolute inset-0 bg-slate-900/10 z-10 group-hover:bg-slate-900/0 transition-colors duration-500" />
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+
+                {/* Gradient Overlay at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-white to-transparent z-20" />
+              </div>
+
+              {/* Content Area */}
+              <div className="relative z-20 p-8 -mt-6 flex flex-col flex-1 text-center">
+                <div className={cn(
+                  "w-20 h-1 rounded-full mx-auto mb-6 transition-all duration-500",
+                  item.color === 'amber' && "bg-amber-400 group-hover:w-12",
+                  item.color === 'blue' && "bg-blue-400 group-hover:w-12",
+                  item.color === 'purple' && "bg-purple-400 group-hover:w-12",
+                )} />
+
+                <h3 className="text-2xl font-bold text-slate-900 mb-3 font-display">
+                  {item.title}
+                </h3>
+                <p className="text-slate-500 leading-relaxed font-medium">
+                  {item.examples}
+                </p>
               </div>
             </motion.div>
           ))}

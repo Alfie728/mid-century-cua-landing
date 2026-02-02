@@ -105,7 +105,7 @@ export function Features() {
               {/* Card Gradient */}
               <div
                 className={cn(
-                  "absolute inset-0 bg-linear-to-br transition-opacity duration-500 group-hover:opacity-100",
+                  "absolute inset-0 bg-linear-to-br transition-opacity duration-500 opacity-0 group-hover:opacity-100",
                   feature.bgGradient,
                 )}
               />
@@ -118,7 +118,7 @@ export function Features() {
               >
                 <div className="flex items-start justify-between mb-6">
                   <div className="relative">
-                    <div className="h-16 w-16 bg-white/80 rounded-2xl border border-white/50 shadow-sm flex items-center justify-center text-slate-700 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 backdrop-blur-md">
+                    <div className="h-16 w-16 bg-white/80 rounded-2xl border border-white/50 shadow-sm flex items-center justify-center text-slate-700 group-hover:scale-110 transition-transform duration-300 backdrop-blur-md">
                       <feature.icon className="w-8 h-8" weight="regular" />
                     </div>
                   </div>
