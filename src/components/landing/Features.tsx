@@ -2,7 +2,6 @@
 
 import {
   ArrowClockwiseIcon,
-  ArrowRightIcon,
   DatabaseIcon,
   MonitorIcon,
 } from "@phosphor-icons/react";

@@ -1,13 +1,12 @@
 import { Audience } from "@/components/landing/Audience";
 import { Differentiators } from "@/components/landing/Differentiators";
-import { ExampleCards } from "@/components/landing/ExampleCards";
 import { Features } from "@/components/landing/Features";
+import { Footer } from "@/components/landing/Footer";
 import { Hero } from "@/components/landing/Hero";
 import { Process } from "@/components/landing/Process";
 import { Products } from "@/components/landing/Products";
 import { SocialProof } from "@/components/landing/SocialProof";
 import { UseCases } from "@/components/landing/UseCases";
-import { Footer } from "@/components/landing/Footer";
 
 export default function Home() {
   return (
@@ -21,7 +20,6 @@ export default function Home() {
       <Process />
       <Differentiators />
       <UseCases />
-      <ExampleCards />
       <Footer />
     </main>
   );
