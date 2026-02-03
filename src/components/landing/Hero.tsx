@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, PlayCircle } from "lucide-react";
+import { ArrowRight, PlayCircle } from "@phosphor-icons/react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { LightRays } from "@/components/ui/light-rays";

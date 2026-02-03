@@ -1,21 +1,23 @@
+"use client";
+
 import {
-  Bot,
-  Building2,
+  Robot,
+  Buildings,
   Compass,
-  FlaskConical,
+  Flask,
   Globe,
   Monitor,
-  Workflow,
-} from "lucide-react";
+  TreeStructure,
+} from "@phosphor-icons/react";
 import { Marquee } from "@/components/ui/marquee";
 import { cn } from "@/lib/utils";
 
 const TEAMS = [
-  { name: "UI Agents", icon: Bot },
-  { name: "Workflow Automation", icon: Workflow },
+  { name: "UI Agents", icon: Robot },
+  { name: "Workflow Automation", icon: TreeStructure },
   { name: "OSWorld-style Evals", icon: Globe },
-  { name: "Enterprise RPA", icon: Building2 },
-  { name: "Frontier Labs", icon: FlaskConical },
+  { name: "Enterprise RPA", icon: Buildings },
+  { name: "Frontier Labs", icon: Flask },
   { name: "Web Voyagers", icon: Compass },
   { name: "Desktop Automation", icon: Monitor },
 ];

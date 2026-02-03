@@ -1,19 +1,13 @@
 "use client";
 
-import { ArrowUpRight, Box, Database, Layout } from "lucide-react";
-import {
-  motion,
-  useSpring,
-  useMotionTemplate,
-  useInView
-} from "motion/react";
-import { useRef, useEffect } from "react";
+import { Cube, Database, Layout } from "@phosphor-icons/react";
+import { motion, useInView, useMotionTemplate, useSpring } from "motion/react";
+import { useEffect, useRef } from "react";
 import {
   AnimatedSpan,
   Terminal,
   TypingAnimation,
 } from "@/components/ui/terminal";
-import { cn } from "@/lib/utils";
 
 function TrainingGraph() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -275,7 +269,7 @@ export function Products() {
 
             <div className="relative z-10 mb-6">
               <div className="p-3 bg-white w-fit rounded-2xl text-emerald-600 mb-6 shadow-sm border border-slate-100">
-                <Box className="w-8 h-8" />
+                <Cube className="w-8 h-8" />
               </div>
               <h3 className="text-3xl font-bold text-slate-900 mb-3 font-display">
                 Training
