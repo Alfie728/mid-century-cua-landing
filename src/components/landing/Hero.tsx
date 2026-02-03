@@ -73,44 +73,6 @@ export function Hero() {
             Book a demo
           </Link>
         </motion.div>
-
-        {/* Small Subtext */}
-        <motion.div
-          initial={shouldReduceMotion ? false : { opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: duration.fast, delay: stagger.normal * 5, ease: easing.easeOut }}
-          className="mt-8 pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center gap-4 text-sm text-slate-400"
-        >
-          <span>Trusted by teams at</span>
-          <div className="flex gap-8 items-center opacity-50 grayscale hover:grayscale-0 transition-all duration-300">
-            {/* FrontierAI */}
-            <img
-              src="/frontierai.png"
-              alt="FrontierAI"
-              width={80}
-              height={24}
-              className="h-6 w-auto object-contain"
-            />
-
-            {/* AgentLab */}
-            <img
-              src="/agentlab-logo-small.png"
-              alt="AgentLab"
-              width={80}
-              height={24}
-              className="h-6 w-auto object-contain"
-            />
-
-            {/* AutoCorp */}
-            <img
-              src="/Autocorp-ai-TM-White.svg"
-              alt="AutoCorp"
-              width={80}
-              height={20}
-              className="h-5 w-auto object-contain invert"
-            />
-          </div>
-        </motion.div>
       </div>
     </section>
   );

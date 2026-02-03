@@ -1,4 +1,3 @@
-import { Audience } from "@/components/landing/Audience";
 import { Differentiators } from "@/components/landing/Differentiators";
 import { Features } from "@/components/landing/Features";
 import { Footer } from "@/components/landing/Footer";
@@ -15,7 +14,6 @@ export default function Home() {
       <Hero />
       <SocialProof />
       <Features />
-      <Audience />
       <Products />
       <Process />
       <Differentiators />
