@@ -28,7 +28,7 @@ const FEATURES = [
     title: "RL Environments",
     description:
       "Deterministic, resettable Windows/macOS/Linux sandboxes. Step-level instrumentation & reward hooks.",
-    colSpan: "md:col-span-1",
+    colSpan: "md:col-span-2",
     bgGradient: "from-purple-500/10 via-purple-500/5 to-transparent",
     color: "purple",
     delay: 0.2,
@@ -39,7 +39,7 @@ const FEATURES = [
     title: "Evals + Reproducibility",
     description:
       "Replay any run, fork from checkpoints, compare policies, and generate benchmark suites from your own workflows. The complete loop for agent improvement.",
-    colSpan: "md:col-span-3",
+    colSpan: "md:col-span-4",
     bgGradient: "from-emerald-500/10 via-emerald-500/5 to-transparent",
     color: "emerald",
     className: "md:flex-row md:items-center gap-8",
@@ -93,7 +93,7 @@ export function Features() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-4  gap-6">
           {FEATURES.map((feature, index) => (
             <motion.div
               key={feature.id}
@@ -134,11 +134,11 @@ export function Features() {
                         "bg-white/80 border-white/50", // Base style
                         // Color variations
                         feature.color === "blue" &&
-                        "text-blue-500 group-hover:bg-blue-500 group-hover:text-white group-hover:border-blue-500",
+                          "text-blue-500 group-hover:bg-blue-500 group-hover:text-white group-hover:border-blue-500",
                         feature.color === "purple" &&
-                        "text-purple-500 group-hover:bg-purple-500 group-hover:text-white group-hover:border-purple-500",
+                          "text-purple-500 group-hover:bg-purple-500 group-hover:text-white group-hover:border-purple-500",
                         feature.color === "emerald" &&
-                        "text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-500",
+                          "text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-500",
                       )}
                     >
                       <feature.icon className="w-8 h-8" weight="regular" />
