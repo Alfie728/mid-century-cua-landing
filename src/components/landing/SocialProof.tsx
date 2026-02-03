@@ -37,7 +37,7 @@ const TeamCard = ({
   return (
     <figure
       className={cn(
-        "relative cursor-default overflow-hidden rounded-full py-2 px-4 transition-all duration-300",
+        "relative cursor-default overflow-hidden rounded-full py-2 px-4 transition-[transform,background-color,border-color,box-shadow] duration-150 ease-out",
         "border border-slate-200/60 bg-white/60 backdrop-blur-md",
         "hover:bg-white hover:shadow-lg hover:shadow-indigo-500/5 hover:-translate-y-0.5 hover:border-indigo-100",
       )}
