@@ -4,12 +4,14 @@ import { ArrowRight, PlayCircle } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 import { LightRays } from "@/components/ui/light-rays";
-import { easing, duration, stagger } from "@/lib/animation";
+import { duration, easing, stagger } from "@/lib/animation";
 
 export function Hero() {
   const shouldReduceMotion = useReducedMotion();
 
-  const initial = shouldReduceMotion ? false : { opacity: 0, transform: "translateY(20px)" };
+  const initial = shouldReduceMotion
+    ? false
+    : { opacity: 0, transform: "translateY(20px)" };
   const animate = { opacity: 1, transform: "translateY(0px)" };
 
   return (
@@ -24,7 +26,11 @@ export function Hero() {
         <motion.h1
           initial={initial}
           animate={animate}
-          transition={{ duration: duration.fast, delay: stagger.normal, ease: easing.easeOut }}
+          transition={{
+            duration: duration.fast,
+            delay: stagger.normal,
+            ease: easing.easeOut,
+          }}
           className="text-6xl md:text-8xl font-bold tracking-tight text-slate-900 leading-[1.05] font-display text-balance"
         >
           <span className="bg-clip-text text-transparent bg-linear-to-br from-indigo-500 to-blue-600">
@@ -41,7 +47,11 @@ export function Hero() {
         <motion.p
           initial={initial}
           animate={animate}
-          transition={{ duration: duration.fast, delay: stagger.normal * 2, ease: easing.easeOut }}
+          transition={{
+            duration: duration.fast,
+            delay: stagger.normal * 2,
+            ease: easing.easeOut,
+          }}
           className="text-xl md:text-2xl text-slate-500 max-w-3xl leading-relaxed"
         >
           Turn real Desktop interaction into{" "}
@@ -53,7 +63,7 @@ export function Hero() {
         </motion.p>
 
         {/* CTAs */}
-        <motion.div
+        {/*<motion.div
           initial={initial}
           animate={animate}
           transition={{ duration: duration.fast, delay: stagger.normal * 3, ease: easing.easeOut }}
@@ -65,14 +75,8 @@ export function Hero() {
           >
             Get started <ArrowRight className="w-5 h-5" />
           </Link>
-          <Link
-            href="#"
-            className="h-14 px-8 rounded-full bg-white border border-slate-200 text-slate-900 font-semibold text-lg flex items-center gap-2 hover:bg-slate-50 hover:border-slate-300 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
-          >
-            <PlayCircle className="w-5 h-5 text-slate-500" />
-            Book a demo
-          </Link>
-        </motion.div>
+
+        </motion.div>*/}
       </div>
     </section>
   );

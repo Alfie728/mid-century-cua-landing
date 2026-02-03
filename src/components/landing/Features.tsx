@@ -4,6 +4,7 @@ import {
   ArrowClockwise,
   Brain,
   Buildings,
+  CheckCircleIcon,
   Database,
   Flask,
   HardDrives,
@@ -192,7 +193,7 @@ export function Features() {
             whileInView={animate}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: duration.fast }}
-            className="lg:col-span-2 group relative rounded-[2.5rem] bg-white/60 border border-slate-200/80 backdrop-blur-md shadow-sm hover:shadow-2xl hover:-translate-y-1 hover:bg-white transition-all duration-200 overflow-hidden flex flex-col md:flex-row p-8 gap-8 items-center"
+            className="lg:col-span-3 group relative rounded-[2.5rem] bg-white/60 border border-slate-200/80 backdrop-blur-md shadow-sm hover:shadow-2xl hover:-translate-y-1 hover:bg-white transition-all duration-200 overflow-hidden flex flex-col md:flex-row p-8 gap-8 items-center"
           >
             <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             <div className="relative z-10 flex-1">
@@ -204,13 +205,29 @@ export function Features() {
                   Frontier Labs
                 </h4>
               </div>
-              <p className="text-slate-500 text-sm">
+              <p className="text-slate-500 text-sm mb-4">
                 Pre-train state-of-the-art VLMs on millions of hours of curated
                 desktop interaction.
               </p>
+              <div className="flex flex-wrap gap-2">
+                {["VLM training", "RLHF", "Trajectory data"].map((tag) => (
+                  <div
+                    key={tag}
+                    className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border bg-white/50 backdrop-blur-sm shadow-xs border-slate-200/60 group-hover:border-slate-300/60 group-hover:bg-blue-50/50 transition-colors duration-150"
+                  >
+                    <CheckCircleIcon
+                      className="w-3.5 h-3.5 shrink-0 text-blue-500"
+                      weight="fill"
+                    />
+                    <span className="text-xs font-medium text-slate-600">
+                      {tag}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
             {/* Labs Visual */}
-            <div className="flex flex-col items-end gap-4 opacity-60 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0">
+            <div className="hidden lg:flex flex-col items-end gap-4 opacity-60 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0">
               <motion.div
                 initial={{ x: 20, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
@@ -292,6 +309,22 @@ export function Features() {
               <p className="text-slate-500 text-sm mb-4">
                 Benchmarking reasoning & safety.
               </p>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {["OSWorld", "WebArena", "Safety evals"].map((tag) => (
+                  <div
+                    key={tag}
+                    className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border bg-white/50 backdrop-blur-sm shadow-xs border-slate-200/60 group-hover:border-slate-300/60 group-hover:bg-purple-50/50 transition-colors duration-150"
+                  >
+                    <CheckCircleIcon
+                      className="w-3.5 h-3.5 shrink-0 text-purple-500"
+                      weight="fill"
+                    />
+                    <span className="text-xs font-medium text-slate-600">
+                      {tag}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </motion.div>
 
@@ -316,6 +349,22 @@ export function Features() {
               <p className="text-slate-500 text-sm mb-4">
                 Secure, private automation.
               </p>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {["SOC 2", "On-prem", "SSO"].map((tag) => (
+                  <div
+                    key={tag}
+                    className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border bg-white/50 backdrop-blur-sm shadow-xs border-slate-200/60 group-hover:border-slate-300/60 group-hover:bg-indigo-50/50 transition-colors duration-150"
+                  >
+                    <CheckCircleIcon
+                      className="w-3.5 h-3.5 shrink-0 text-indigo-500"
+                      weight="fill"
+                    />
+                    <span className="text-xs font-medium text-slate-600">
+                      {tag}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </motion.div>
 
@@ -325,31 +374,35 @@ export function Features() {
             whileInView={animate}
             viewport={{ once: true }}
             transition={{ delay: 0.7, duration: duration.fast }}
-            className="lg:col-span-2 group relative rounded-[2.5rem] bg-white/60 border border-slate-200/80 backdrop-blur-md shadow-sm hover:shadow-2xl hover:-translate-y-1 hover:bg-white transition-all duration-200 overflow-hidden flex flex-col md:flex-row p-8 gap-8 items-center"
+            className="lg:col-span-1 group relative rounded-[2.5rem] bg-white/60 border border-slate-200/80 backdrop-blur-md shadow-sm hover:shadow-2xl hover:-translate-y-1 hover:bg-white transition-all duration-200 overflow-hidden p-8"
           >
             <div className="absolute inset-0 bg-linear-to-br from-emerald-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-            <div className="relative z-10 flex-1">
+            <div className="relative z-10">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-lg bg-white border border-slate-100 flex items-center justify-center text-emerald-600">
                   <HardDrives className="w-5 h-5" weight="duotone" />
                 </div>
                 <h4 className="text-lg font-bold text-slate-900">Data Teams</h4>
               </div>
-              <p className="text-slate-500 text-sm">
-                High-fidelity traces with DOM, network, and accessibility trees
-                for perfect provenance.
+              <p className="text-slate-500 text-sm mb-4">
+                Scalable collection with full provenance.
               </p>
-            </div>
-            {/* Data Visual */}
-            <div className="font-mono text-[10px] text-slate-400 bg-slate-50 p-3 rounded-lg border border-slate-200 w-48">
-              <div>{"{"}</div>
-              <div className="pl-2">
-                "id": <span className="text-blue-500">"traj_29"</span>,
+              <div className="flex flex-wrap gap-2 mt-4">
+                {["DOM trees", "A11y", "Network"].map((tag) => (
+                  <div
+                    key={tag}
+                    className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border bg-white/50 backdrop-blur-sm shadow-xs border-slate-200/60 group-hover:border-slate-300/60 group-hover:bg-emerald-50/50 transition-colors duration-150"
+                  >
+                    <CheckCircleIcon
+                      className="w-3.5 h-3.5 shrink-0 text-emerald-500"
+                      weight="fill"
+                    />
+                    <span className="text-xs font-medium text-slate-600">
+                      {tag}
+                    </span>
+                  </div>
+                ))}
               </div>
-              <div className="pl-2">
-                "quality": <span className="text-emerald-500">0.99</span>
-              </div>
-              <div>{"}"}</div>
             </div>
           </motion.div>
         </div>
