@@ -9,8 +9,8 @@ import {
   TerminalWindow,
 } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "motion/react";
+import { duration, easing, stagger } from "@/lib/animation";
 import { cn } from "@/lib/utils";
-import { easing, duration, stagger } from "@/lib/animation";
 
 const DIFFERENTIATORS = [
   {
@@ -59,7 +59,9 @@ const DIFFERENTIATORS = [
 
 export function Differentiators() {
   const shouldReduceMotion = useReducedMotion();
-  const initial = shouldReduceMotion ? false : { opacity: 0, transform: "translateY(20px)" };
+  const initial = shouldReduceMotion
+    ? false
+    : { opacity: 0, transform: "translateY(20px)" };
   const animate = { opacity: 1, transform: "translateY(0px)" };
   const items = DIFFERENTIATORS;
 
@@ -71,7 +73,11 @@ export function Differentiators() {
             initial={initial}
             whileInView={animate}
             viewport={{ once: true }}
-            transition={{ delay: stagger.normal, duration: duration.fast, ease: easing.easeOut }}
+            transition={{
+              delay: stagger.normal,
+              duration: duration.fast,
+              ease: easing.easeOut,
+            }}
             className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight font-display text-balance"
           >
             Why CUA?
@@ -80,7 +86,11 @@ export function Differentiators() {
             initial={initial}
             whileInView={animate}
             viewport={{ once: true }}
-            transition={{ delay: stagger.normal * 2, duration: duration.fast, ease: easing.easeOut }}
+            transition={{
+              delay: stagger.normal * 2,
+              duration: duration.fast,
+              ease: easing.easeOut,
+            }}
             className="text-lg text-slate-500 max-w-2xl text-balance"
           >
             We built the infrastructure we wished we had when we were training
@@ -95,7 +105,11 @@ export function Differentiators() {
               initial={initial}
               whileInView={animate}
               viewport={{ once: true }}
-              transition={{ delay: index * stagger.normal, duration: duration.fast, ease: easing.easeOut }}
+              transition={{
+                delay: index * stagger.normal,
+                duration: duration.fast,
+                ease: easing.easeOut,
+              }}
               className={cn(
                 "group relative md:p-10 p-8 rounded-[2.5rem] bg-white/60 border border-slate-200/80 backdrop-blur-md shadow-sm hover:shadow-2xl transition-all duration-200 flex flex-col justify-between overflow-hidden",
                 "hover:-translate-y-1 hover:bg-white",

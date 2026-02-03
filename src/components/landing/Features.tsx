@@ -6,8 +6,8 @@ import {
   MonitorIcon,
 } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "motion/react";
+import { duration, easing, stagger } from "@/lib/animation";
 import { cn } from "@/lib/utils";
-import { easing, duration, stagger } from "@/lib/animation";
 
 // Feature data with tailored configurations for the Bento Grid
 const FEATURES = [
@@ -19,6 +19,7 @@ const FEATURES = [
       "Collect and ship large-scale, high-signal UI data: screenshots, DOM/accessibility trees, actions, tool calls, outcomes, and error states. Everything you need to train SOTA agents.",
     colSpan: "md:col-span-2",
     bgGradient: "from-blue-500/10 via-blue-500/5 to-transparent",
+    color: "blue",
     delay: 0.1,
   },
   {
@@ -29,6 +30,7 @@ const FEATURES = [
       "Deterministic, resettable Windows/macOS/Linux sandboxes. Step-level instrumentation & reward hooks.",
     colSpan: "md:col-span-1",
     bgGradient: "from-purple-500/10 via-purple-500/5 to-transparent",
+    color: "purple",
     delay: 0.2,
   },
   {
@@ -39,6 +41,7 @@ const FEATURES = [
       "Replay any run, fork from checkpoints, compare policies, and generate benchmark suites from your own workflows. The complete loop for agent improvement.",
     colSpan: "md:col-span-3",
     bgGradient: "from-emerald-500/10 via-emerald-500/5 to-transparent",
+    color: "emerald",
     className: "md:flex-row md:items-center gap-8",
     contentClassName: "md:flex-row md:items-center justify-between w-full",
     delay: 0.3,
@@ -47,7 +50,9 @@ const FEATURES = [
 
 export function Features() {
   const shouldReduceMotion = useReducedMotion();
-  const initial = shouldReduceMotion ? false : { opacity: 0, transform: "translateY(20px)" };
+  const initial = shouldReduceMotion
+    ? false
+    : { opacity: 0, transform: "translateY(20px)" };
   const animate = { opacity: 1, transform: "translateY(0px)" };
 
   return (
@@ -58,7 +63,11 @@ export function Features() {
             initial={initial}
             whileInView={animate}
             viewport={{ once: true }}
-            transition={{ delay: stagger.normal, duration: duration.fast, ease: easing.easeOut }}
+            transition={{
+              delay: stagger.normal,
+              duration: duration.fast,
+              ease: easing.easeOut,
+            }}
             className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight"
           >
             What you get
@@ -68,7 +77,11 @@ export function Features() {
             initial={initial}
             whileInView={animate}
             viewport={{ once: true }}
-            transition={{ delay: stagger.normal * 2, duration: duration.fast, ease: easing.easeOut }}
+            transition={{
+              delay: stagger.normal * 2,
+              duration: duration.fast,
+              ease: easing.easeOut,
+            }}
             className="text-xl text-slate-500 leading-relaxed"
           >
             Upshot: you don't just demo an agent—you can{" "}
@@ -87,11 +100,15 @@ export function Features() {
               initial={initial}
               whileInView={animate}
               viewport={{ once: true }}
-              transition={{ delay: feature.delay, duration: duration.fast, ease: easing.easeOut }}
+              transition={{
+                delay: feature.delay,
+                duration: duration.fast,
+                ease: easing.easeOut,
+              }}
               className={cn(
-                "group relative rounded-[2rem] overflow-hidden border border-slate-200/80",
-                "bg-white/60 backdrop-blur-xl shadow-lg shadow-slate-200/50",
-                "hover:shadow-xl hover:shadow-blue-500/10 hover:border-white/60 transition-all duration-200",
+                "group relative rounded-[2.5rem] overflow-hidden border border-slate-200/80",
+                "bg-white/60 backdrop-blur-md shadow-sm",
+                "hover:shadow-2xl hover:-translate-y-1 hover:bg-white transition-all duration-200",
                 feature.colSpan,
               )}
             >
@@ -111,7 +128,19 @@ export function Features() {
               >
                 <div className="flex items-start justify-between mb-6">
                   <div className="relative">
-                    <div className="h-16 w-16 bg-white/80 rounded-2xl border border-white/50 shadow-sm flex items-center justify-center text-slate-700 group-hover:scale-110 transition-transform duration-200 backdrop-blur-md">
+                    <div
+                      className={cn(
+                        "h-16 w-16 rounded-2xl border flex items-center justify-center transition-all duration-200 group-hover:scale-110 backdrop-blur-md shadow-sm",
+                        "bg-white/80 border-white/50", // Base style
+                        // Color variations
+                        feature.color === "blue" &&
+                        "text-blue-500 group-hover:bg-blue-500 group-hover:text-white group-hover:border-blue-500",
+                        feature.color === "purple" &&
+                        "text-purple-500 group-hover:bg-purple-500 group-hover:text-white group-hover:border-purple-500",
+                        feature.color === "emerald" &&
+                        "text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-500",
+                      )}
+                    >
                       <feature.icon className="w-8 h-8" weight="regular" />
                     </div>
                   </div>
@@ -119,7 +148,7 @@ export function Features() {
 
                 <div className={cn("flex-1", feature.contentClassName)}>
                   <div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors duration-150 tracking-tight">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-3  transition-colors duration-150 tracking-tight">
                       {feature.title}
                     </h3>
                     <p className="text-slate-500 leading-relaxed text-[16px]">

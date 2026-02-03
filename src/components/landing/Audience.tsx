@@ -108,7 +108,7 @@ export function Audience() {
                 whileInView={animate}
                 viewport={{ once: true }}
                 transition={{ delay: item.delay, duration: duration.fast, ease: easing.easeOut }}
-                className="group relative p-8 rounded-[2rem] bg-white/60 border border-slate-200/80 backdrop-blur-xl shadow-sm hover:shadow-xl hover:shadow-indigo-500/10 hover:border-indigo-200 transition-all duration-200 overflow-hidden"
+                className="group relative md:p-10 p-8 rounded-[2.5rem] bg-white/60 border border-slate-200/80 backdrop-blur-md shadow-sm hover:shadow-2xl hover:-translate-y-1 hover:bg-white transition-all duration-200 overflow-hidden"
               >
                 {/* Hover Gradient Overlay */}
                 <div
