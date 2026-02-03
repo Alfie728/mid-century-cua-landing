@@ -101,13 +101,13 @@ export function Products() {
             whileInView={animate}
             viewport={{ once: true }}
             transition={{ delay: stagger.normal * 2, duration: duration.fast, ease: easing.easeOut }}
-            className=" rounded-[2.5rem] bg-white/60 border border-slate-200/80 p-10 flex flex-col justify-between overflow-hidden relative group shadow-sm hover:shadow-xl hover:border-blue-200 transition-all duration-200 backdrop-blur-xl"
+            className="rounded-[2.5rem] bg-white/60 border border-slate-200/80 p-10 flex flex-col justify-between overflow-hidden relative group shadow-sm hover:shadow-2xl hover:-translate-y-1 hover:bg-white transition-all duration-200 backdrop-blur-md"
           >
             <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
 
             <div className="relative z-10 mb-8">
-              <div className="p-3 bg-white w-fit rounded-2xl text-blue-600 mb-6 shadow-sm border border-slate-100">
-                <Database className="w-8 h-8" />
+              <div className="h-14 w-14 rounded-2xl bg-white/80 border border-white/50 shadow-sm flex items-center justify-center text-blue-500 mb-6 transition-all duration-200 group-hover:scale-110 group-hover:bg-blue-500 group-hover:text-white group-hover:border-blue-500 backdrop-blur-md">
+                <Database className="w-7 h-7" weight="duotone" />
               </div>
               <h3 className="text-3xl font-bold text-slate-900 mb-3 font-display">
                 Data
@@ -176,7 +176,7 @@ export function Products() {
             whileInView={animate}
             viewport={{ once: true }}
             transition={{ delay: stagger.normal * 3, duration: duration.fast, ease: easing.easeOut }}
-            className="md:row-span-2 rounded-[2.5rem] bg-[#0F1117] p-10 flex flex-col overflow-hidden relative group hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-200 border border-slate-800"
+            className="md:row-span-2 rounded-[2.5rem] bg-[#0F1117] p-10 flex flex-col overflow-hidden relative group shadow-sm hover:shadow-2xl hover:shadow-indigo-500/20 hover:-translate-y-1 transition-all duration-200 border border-slate-800"
           >
             {/* Dark Glass Effect */}
             <div className="absolute inset-0 bg-linear-to-b from-[#0F1117] to-slate-950" />
@@ -258,13 +258,13 @@ export function Products() {
             whileInView={animate}
             viewport={{ once: true }}
             transition={{ delay: stagger.normal * 4, duration: duration.fast, ease: easing.easeOut }}
-            className="rounded-[2.5rem] bg-white/60 border border-slate-200/80 p-10 flex flex-col justify-between overflow-hidden relative group shadow-sm hover:shadow-xl hover:border-emerald-200 transition-all duration-200 backdrop-blur-xl"
+            className="rounded-[2.5rem] bg-white/60 border border-slate-200/80 p-10 flex flex-col justify-between overflow-hidden relative group shadow-sm hover:shadow-2xl hover:-translate-y-1 hover:bg-white transition-all duration-200 backdrop-blur-md"
           >
             <div className="absolute inset-0 bg-linear-to-br from-emerald-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
 
             <div className="relative z-10 mb-6">
-              <div className="p-3 bg-white w-fit rounded-2xl text-emerald-600 mb-6 shadow-sm border border-slate-100">
-                <Cube className="w-8 h-8" />
+              <div className="h-14 w-14 rounded-2xl bg-white/80 border border-white/50 shadow-sm flex items-center justify-center text-emerald-500 mb-6 transition-all duration-200 group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-500 backdrop-blur-md">
+                <Cube className="w-7 h-7" weight="duotone" />
               </div>
               <h3 className="text-3xl font-bold text-slate-900 mb-3 font-display">
                 Training
