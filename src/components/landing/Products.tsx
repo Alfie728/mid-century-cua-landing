@@ -1,14 +1,20 @@
 "use client";
 
 import { Cube, Database, Layout } from "@phosphor-icons/react";
-import { motion, useInView, useMotionTemplate, useSpring, useReducedMotion } from "motion/react";
+import {
+  motion,
+  useInView,
+  useMotionTemplate,
+  useReducedMotion,
+  useSpring,
+} from "motion/react";
 import { useEffect, useRef } from "react";
 import {
   AnimatedSpan,
   Terminal,
   TypingAnimation,
 } from "@/components/ui/terminal";
-import { easing, duration, stagger } from "@/lib/animation";
+import { duration, easing, stagger } from "@/lib/animation";
 
 function TrainingGraph() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -16,7 +22,10 @@ function TrainingGraph() {
   const shouldReduceMotion = useReducedMotion();
 
   // Start at 100% (hidden) and animate to 0% (visible)
-  const clipPathValue = useSpring(shouldReduceMotion ? 0 : 100, { damping: 20, stiffness: 100 });
+  const clipPathValue = useSpring(shouldReduceMotion ? 0 : 100, {
+    damping: 20,
+    stiffness: 100,
+  });
   const clipPathTemplate = useMotionTemplate`inset(0px ${clipPathValue}% 0px 0px)`;
 
   useEffect(() => {
@@ -76,7 +85,9 @@ function TrainingGraph() {
 
 export function Products() {
   const shouldReduceMotion = useReducedMotion();
-  const initial = shouldReduceMotion ? false : { opacity: 0, transform: "translateY(20px)" };
+  const initial = shouldReduceMotion
+    ? false
+    : { opacity: 0, transform: "translateY(20px)" };
   const animate = { opacity: 1, transform: "translateY(0px)" };
 
   return (
@@ -87,7 +98,11 @@ export function Products() {
             initial={initial}
             whileInView={animate}
             viewport={{ once: true }}
-            transition={{ delay: stagger.normal, duration: duration.fast, ease: easing.easeOut }}
+            transition={{
+              delay: stagger.normal,
+              duration: duration.fast,
+              ease: easing.easeOut,
+            }}
             className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 tracking-tight font-display"
           >
             The complete stack <br /> for computer-use agents.
@@ -100,7 +115,11 @@ export function Products() {
             initial={initial}
             whileInView={animate}
             viewport={{ once: true }}
-            transition={{ delay: stagger.normal * 2, duration: duration.fast, ease: easing.easeOut }}
+            transition={{
+              delay: stagger.normal * 2,
+              duration: duration.fast,
+              ease: easing.easeOut,
+            }}
             className="rounded-[2.5rem] bg-white/60 border border-slate-200/80 p-10 flex flex-col justify-between overflow-hidden relative group shadow-sm hover:shadow-2xl hover:-translate-y-1 hover:bg-white transition-all duration-200 backdrop-blur-md"
           >
             <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
@@ -175,7 +194,11 @@ export function Products() {
             initial={initial}
             whileInView={animate}
             viewport={{ once: true }}
-            transition={{ delay: stagger.normal * 3, duration: duration.fast, ease: easing.easeOut }}
+            transition={{
+              delay: stagger.normal * 3,
+              duration: duration.fast,
+              ease: easing.easeOut,
+            }}
             className="md:row-span-2 rounded-[2.5rem] bg-[#0F1117] p-10 flex flex-col overflow-hidden relative group shadow-sm hover:shadow-2xl hover:shadow-indigo-500/20 hover:-translate-y-1 transition-all duration-200 border border-slate-800"
           >
             {/* Dark Glass Effect */}
@@ -195,7 +218,7 @@ export function Products() {
             </div>
 
             {/* Magic UI Terminal */}
-            <div className="relative flex-1 w-full rounded-xl overflow-hidden shadow-2xl border border-slate-700/50 bg-[#0F1117] min-h-[500px]">
+            <div className="relative flex-1 w-full rounded-xl overflow-hidden shadow-2xl  bg-[#0F1117] min-h-[500px]">
               <Terminal className="h-full w-full bg-transparent p-6 font-mono text-sm leading-relaxed">
                 <TypingAnimation className="text-slate-200 text-base">
                   start-env --os=ubuntu --gpu=true
@@ -257,7 +280,11 @@ export function Products() {
             initial={initial}
             whileInView={animate}
             viewport={{ once: true }}
-            transition={{ delay: stagger.normal * 4, duration: duration.fast, ease: easing.easeOut }}
+            transition={{
+              delay: stagger.normal * 4,
+              duration: duration.fast,
+              ease: easing.easeOut,
+            }}
             className="rounded-[2.5rem] bg-white/60 border border-slate-200/80 p-10 flex flex-col justify-between overflow-hidden relative group shadow-sm hover:shadow-2xl hover:-translate-y-1 hover:bg-white transition-all duration-200 backdrop-blur-md"
           >
             <div className="absolute inset-0 bg-linear-to-br from-emerald-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
