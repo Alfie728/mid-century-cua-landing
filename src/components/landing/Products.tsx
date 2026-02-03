@@ -8,7 +8,7 @@ import {
   useReducedMotion,
   useSpring,
 } from "motion/react";
-import { useEffect, useRef } from "react";
+import { useEffect, useEffectEvent, useRef } from "react";
 import {
   AnimatedSpan,
   Terminal,
@@ -18,25 +18,29 @@ import { duration, easing, stagger } from "@/lib/animation";
 
 function TrainingGraph() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const isInView = useInView(containerRef, { once: true, margin: "-200px" });
   const shouldReduceMotion = useReducedMotion();
 
   // Start at 100% (hidden) and animate to 0% (visible)
   const clipPathValue = useSpring(shouldReduceMotion ? 0 : 100, {
-    damping: 20,
-    stiffness: 100,
+    bounce: 0,
+    duration: 1100,
   });
   const clipPathTemplate = useMotionTemplate`inset(0px ${clipPathValue}% 0px 0px)`;
 
+  const onReveal = useEffectEvent(() => {
+    const timer = setTimeout(() => {
+      clipPathValue.set(0);
+    }, 200);
+    return () => clearTimeout(timer);
+  });
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: useEffectEvent handles dependencies
   useEffect(() => {
     if (isInView && !shouldReduceMotion) {
-      // Add a small delay for dramatic effect
-      const timer = setTimeout(() => {
-        clipPathValue.set(0);
-      }, 200);
-      return () => clearTimeout(timer);
+      return onReveal();
     }
-  }, [isInView, clipPathValue, shouldReduceMotion]);
+  }, [isInView, shouldReduceMotion]);
 
   return (
     <div ref={containerRef} className="w-full h-full">
@@ -150,11 +154,11 @@ export function Products() {
                 </span>
               </div>
 
-              <div className="p-5 font-mono text-xs md:text-sm text-slate-600 leading-relaxed overflow-hidden">
+              <div className="p-5 font-mono text-xs md:text-sm text-slate-600 leading-relaxed overflow-scroll">
                 <div className="opacity-50">{"{"}</div>
                 <div className="pl-4">
                   <span className="text-purple-600">"agent_id"</span>:{" "}
-                  <span className="text-emerald-600">"claude-3-opus"</span>,
+                  <span className="text-emerald-600">"claude-4-opus"</span>,
                 </div>
                 <div className="pl-4">
                   <span className="text-purple-600">"trajectory"</span>: [
