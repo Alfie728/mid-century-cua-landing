@@ -7,8 +7,9 @@ import {
   Package,
   Record,
 } from "@phosphor-icons/react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
+import { easing, duration, stagger } from "@/lib/animation";
 
 const STEPS = [
   {
@@ -42,6 +43,10 @@ const STEPS = [
 ];
 
 export function Process() {
+  const shouldReduceMotion = useReducedMotion();
+  const initial = shouldReduceMotion ? false : { opacity: 0, transform: "translateY(20px)" };
+  const animate = { opacity: 1, transform: "translateY(0px)" };
+
   return (
     <section className="py-24 md:py-32 relative overflow-hidden font-sans">
       {/* Background Elements */}
@@ -50,10 +55,10 @@ export function Process() {
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <div className="text-center mb-20">
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={initial}
+            whileInView={animate}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            transition={{ delay: stagger.normal, duration: duration.fast, ease: easing.easeOut }}
             className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 font-display tracking-tight"
           >
             How it works
@@ -70,17 +75,17 @@ export function Process() {
             {STEPS.map((step, index) => (
               <motion.div
                 key={step.number}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={initial}
+                whileInView={animate}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.15 }}
+                transition={{ delay: index * stagger.slow, duration: duration.fast, ease: easing.easeOut }}
                 className="group relative"
               >
                 {/* Step Number Badge */}
-                <div className="w-28 h-28 mx-auto bg-white rounded-3xl border border-slate-200 shadow-sm flex flex-col items-center justify-center relative z-10 group-hover:scale-110 transition-all duration-300 mb-8">
+                <div className="w-28 h-28 mx-auto bg-white rounded-3xl border border-slate-200 shadow-sm flex flex-col items-center justify-center relative z-10 group-hover:scale-110 transition-all duration-200 mb-8">
                   <div
                     className={cn(
-                      "absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-linear-to-br",
+                      "absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-linear-to-br",
                       step.color === "blue" &&
                         "from-blue-500/10 to-transparent",
                       step.color === "red" && "from-red-500/10 to-transparent",
@@ -93,7 +98,7 @@ export function Process() {
 
                   <step.icon
                     className={cn(
-                      "w-10 h-10 mb-2 transition-colors duration-300",
+                      "w-10 h-10 mb-2 transition-colors duration-150",
                       step.color === "blue" && "text-blue-500",
                       step.color === "red" && "text-red-500",
                       step.color === "amber" && "text-amber-500",
@@ -101,7 +106,7 @@ export function Process() {
                     )}
                     weight="duotone"
                   />
-                  <span className="text-xs font-mono font-bold text-slate-400 group-hover:text-slate-600 transition-colors">
+                  <span className="text-xs font-mono font-bold text-slate-400 group-hover:text-slate-600 transition-colors duration-150">
                     STEP {step.number}
                   </span>
                 </div>

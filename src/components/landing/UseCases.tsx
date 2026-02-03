@@ -11,9 +11,10 @@ import {
   TerminalIcon,
   WrenchIcon,
 } from "@phosphor-icons/react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { easing, duration, stagger } from "@/lib/animation";
 
 // Combined Data Structure for the Matrix
 const MATRIX_ITEMS = [
@@ -100,25 +101,29 @@ const MATRIX_ITEMS = [
 ];
 
 export function UseCases() {
+  const shouldReduceMotion = useReducedMotion();
+  const initial = shouldReduceMotion ? false : { opacity: 0, transform: "translateY(20px)" };
+  const animate = { opacity: 1, transform: "translateY(0px)" };
+
   return (
     <section className="py-32 relative overflow-hidden font-sans">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         {/* Header */}
         <div className="mb-20 max-w-2xl">
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={initial}
+            whileInView={animate}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            transition={{ delay: stagger.normal, duration: duration.fast, ease: easing.easeOut }}
             className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 font-display tracking-tight leading-[1.1]"
           >
             Universal <span className="text-indigo-600">Control</span>
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={initial}
+            whileInView={animate}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: stagger.normal * 2, duration: duration.fast, ease: easing.easeOut }}
             className="text-lg text-slate-600 leading-relaxed text-balance"
           >
             A unified interface for training, evaluating, and deploying agents
@@ -131,12 +136,12 @@ export function UseCases() {
           {MATRIX_ITEMS.map((item, index) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={initial}
+              whileInView={animate}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
+              transition={{ delay: index * stagger.fast, duration: duration.fast, ease: easing.easeOut }}
               className={cn(
-                "group relative overflow-hidden rounded-[2.5rem] border transition-all duration-500",
+                "group relative overflow-hidden rounded-[2.5rem] border transition-all duration-200",
                 item.colSpan,
                 item.rowSpan,
                 "bg-white/60 border-slate-200/80 backdrop-blur-md shadow-sm hover:shadow-xl hover:-translate-y-1 hover:bg-white",
@@ -148,7 +153,7 @@ export function UseCases() {
                   <div className="flex items-start justify-between mb-auto">
                     <div
                       className={cn(
-                        "w-12 h-12 rounded-2xl flex items-center justify-center border transition-all duration-300 bg-white shadow-sm",
+                        "w-12 h-12 rounded-2xl flex items-center justify-center border transition-all duration-200 bg-white shadow-sm",
                         item.color === "blue" &&
                           "text-blue-600 border-blue-100 group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white",
                         item.color === "indigo" &&
@@ -177,7 +182,7 @@ export function UseCases() {
                   {/* Hover gradient overlay */}
                   <div
                     className={cn(
-                      "absolute inset-0 bg-linear-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none",
+                      "absolute inset-0 bg-linear-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none",
                       item.color === "blue" &&
                         "from-blue-500/10 via-blue-500/5 to-transparent",
                       item.color === "indigo" &&
@@ -199,7 +204,7 @@ export function UseCases() {
                   {/* Hover gradient overlay */}
                   <div
                     className={cn(
-                      "absolute inset-0 bg-linear-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10",
+                      "absolute inset-0 bg-linear-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10",
                       item.color === "amber" &&
                         "from-amber-500/10 via-amber-500/5 to-transparent",
                       item.color === "blue" &&
@@ -232,7 +237,7 @@ export function UseCases() {
                         <div
                           key={tech}
                           className={cn(
-                            "flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border bg-white/50 backdrop-blur-sm shadow-xs transition-colors duration-300",
+                            "flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border bg-white/50 backdrop-blur-sm shadow-xs transition-colors duration-150",
                             "border-slate-200/60 group-hover:border-slate-300/60",
                             item.color === "blue" &&
                               "group-hover:bg-blue-50/50",
@@ -260,14 +265,14 @@ export function UseCases() {
                   </div>
 
                   {/* Image - naturally flows below content */}
-                  <div className="relative flex-1 min-h-0 rounded-b-[2.5rem] overflow-hidden opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="relative flex-1 min-h-0 rounded-b-[2.5rem] overflow-hidden opacity-90 group-hover:opacity-100 transition-opacity duration-200">
                     <Image
                       src={item.image!}
                       alt={item.title}
                       fill
-                      className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-linear-to-t from-white/40 via-white/20 via-35% to-transparent to-60% hover:opacity-40 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-linear-to-t from-white/40 via-white/20 via-35% to-transparent to-60% hover:opacity-40 transition-opacity duration-200" />
                   </div>
 
                   {/* Glass Shine */}

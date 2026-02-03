@@ -1,31 +1,33 @@
 "use client";
 
 import { Cube, Database, Layout } from "@phosphor-icons/react";
-import { motion, useInView, useMotionTemplate, useSpring } from "motion/react";
+import { motion, useInView, useMotionTemplate, useSpring, useReducedMotion } from "motion/react";
 import { useEffect, useRef } from "react";
 import {
   AnimatedSpan,
   Terminal,
   TypingAnimation,
 } from "@/components/ui/terminal";
+import { easing, duration, stagger } from "@/lib/animation";
 
 function TrainingGraph() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const shouldReduceMotion = useReducedMotion();
 
   // Start at 100% (hidden) and animate to 0% (visible)
-  const clipPathValue = useSpring(100, { damping: 20, stiffness: 100 });
+  const clipPathValue = useSpring(shouldReduceMotion ? 0 : 100, { damping: 20, stiffness: 100 });
   const clipPathTemplate = useMotionTemplate`inset(0px ${clipPathValue}% 0px 0px)`;
 
   useEffect(() => {
-    if (isInView) {
+    if (isInView && !shouldReduceMotion) {
       // Add a small delay for dramatic effect
       const timer = setTimeout(() => {
         clipPathValue.set(0);
       }, 200);
       return () => clearTimeout(timer);
     }
-  }, [isInView, clipPathValue]);
+  }, [isInView, clipPathValue, shouldReduceMotion]);
 
   return (
     <div ref={containerRef} className="w-full h-full">
@@ -73,15 +75,19 @@ function TrainingGraph() {
 }
 
 export function Products() {
+  const shouldReduceMotion = useReducedMotion();
+  const initial = shouldReduceMotion ? false : { opacity: 0, transform: "translateY(20px)" };
+  const animate = { opacity: 1, transform: "translateY(0px)" };
+
   return (
     <section className="py-32 relative overflow-hidden font-sans">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <div className="mb-20">
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={initial}
+            whileInView={animate}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            transition={{ delay: stagger.normal, duration: duration.fast, ease: easing.easeOut }}
             className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 tracking-tight font-display"
           >
             The complete stack <br /> for computer-use agents.
@@ -91,13 +97,13 @@ export function Products() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:auto-rows-[500px]">
           {/* DATA CARD - Large Span */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={initial}
+            whileInView={animate}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className=" rounded-[2.5rem] bg-white/60 border border-slate-200/80 p-10 flex flex-col justify-between overflow-hidden relative group shadow-sm hover:shadow-xl hover:border-blue-200 transition-all duration-500 backdrop-blur-xl"
+            transition={{ delay: stagger.normal * 2, duration: duration.fast, ease: easing.easeOut }}
+            className=" rounded-[2.5rem] bg-white/60 border border-slate-200/80 p-10 flex flex-col justify-between overflow-hidden relative group shadow-sm hover:shadow-xl hover:border-blue-200 transition-all duration-200 backdrop-blur-xl"
           >
-            <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
 
             <div className="relative z-10 mb-8">
               <div className="p-3 bg-white w-fit rounded-2xl text-blue-600 mb-6 shadow-sm border border-slate-100">
@@ -113,7 +119,7 @@ export function Products() {
             </div>
 
             {/* Visual: JSON Stream */}
-            <div className="relative flex-1 w-full bg-slate-50 rounded-2xl border border-slate-200/60 overflow-hidden flex flex-col shadow-inner group-hover:bg-white transition-colors">
+            <div className="relative flex-1 w-full bg-slate-50 rounded-2xl border border-slate-200/60 overflow-hidden flex flex-col shadow-inner group-hover:bg-white transition-colors duration-200">
               <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-200/60 bg-white/50 backdrop-blur-sm">
                 <div className="flex gap-1.5">
                   <div className="w-2.5 h-2.5 rounded-full bg-slate-300" />
@@ -166,11 +172,11 @@ export function Products() {
 
           {/* ENVIRONMENTS CARD - Tall Span with Terminal */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={initial}
+            whileInView={animate}
             viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="md:row-span-2 rounded-[2.5rem] bg-[#0F1117] p-10 flex flex-col overflow-hidden relative group hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-500 border border-slate-800"
+            transition={{ delay: stagger.normal * 3, duration: duration.fast, ease: easing.easeOut }}
+            className="md:row-span-2 rounded-[2.5rem] bg-[#0F1117] p-10 flex flex-col overflow-hidden relative group hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-200 border border-slate-800"
           >
             {/* Dark Glass Effect */}
             <div className="absolute inset-0 bg-linear-to-b from-[#0F1117] to-slate-950" />
@@ -238,7 +244,7 @@ export function Products() {
               {["Ubuntu", "Windows 11", "macOS"].map((os) => (
                 <span
                   key={os}
-                  className="px-3 py-1 rounded-full bg-white/5 text-slate-300 text-sm border border-white/10 hover:bg-white/10 hover:border-white/20 transition-colors cursor-default"
+                  className="px-3 py-1 rounded-full bg-white/5 text-slate-300 text-sm border border-white/10 hover:bg-white/10 hover:border-white/20 transition-colors duration-150 cursor-default"
                 >
                   {os}
                 </span>
@@ -248,13 +254,13 @@ export function Products() {
 
           {/* TRAINING CARD */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={initial}
+            whileInView={animate}
             viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            className="rounded-[2.5rem] bg-white/60 border border-slate-200/80 p-10 flex flex-col justify-between overflow-hidden relative group shadow-sm hover:shadow-xl hover:border-emerald-200 transition-all duration-500 backdrop-blur-xl"
+            transition={{ delay: stagger.normal * 4, duration: duration.fast, ease: easing.easeOut }}
+            className="rounded-[2.5rem] bg-white/60 border border-slate-200/80 p-10 flex flex-col justify-between overflow-hidden relative group shadow-sm hover:shadow-xl hover:border-emerald-200 transition-all duration-200 backdrop-blur-xl"
           >
-            <div className="absolute inset-0 bg-linear-to-br from-emerald-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-linear-to-br from-emerald-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
 
             <div className="relative z-10 mb-6">
               <div className="p-3 bg-white w-fit rounded-2xl text-emerald-600 mb-6 shadow-sm border border-slate-100">

@@ -93,7 +93,7 @@
 }
 
 .animate-blob {
-  animation: blob 7s infinite;
+  animation: blob 7s ease-in-out infinite;
 }
 
 .animation-delay-2000 {
@@ -180,5 +180,17 @@
   body {
     @apply bg-background text-foreground font-sans;
     font-family: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
+  }
+}
+
+/* Reduced motion support for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -8,8 +8,9 @@ import {
   Stack,
   TerminalWindow,
 } from "@phosphor-icons/react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
+import { easing, duration, stagger } from "@/lib/animation";
 
 const DIFFERENTIATORS = [
   {
@@ -57,6 +58,9 @@ const DIFFERENTIATORS = [
 ];
 
 export function Differentiators() {
+  const shouldReduceMotion = useReducedMotion();
+  const initial = shouldReduceMotion ? false : { opacity: 0, transform: "translateY(20px)" };
+  const animate = { opacity: 1, transform: "translateY(0px)" };
   const items = DIFFERENTIATORS;
 
   return (
@@ -64,19 +68,19 @@ export function Differentiators() {
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <div className="mb-20 text-center md:text-left">
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={initial}
+            whileInView={animate}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            transition={{ delay: stagger.normal, duration: duration.fast, ease: easing.easeOut }}
             className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight font-display text-balance"
           >
             Why CUA?
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={initial}
+            whileInView={animate}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: stagger.normal * 2, duration: duration.fast, ease: easing.easeOut }}
             className="text-lg text-slate-500 max-w-2xl text-balance"
           >
             We built the infrastructure we wished we had when we were training
@@ -88,12 +92,12 @@ export function Differentiators() {
           {items.map((item, index) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={initial}
+              whileInView={animate}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * stagger.normal, duration: duration.fast, ease: easing.easeOut }}
               className={cn(
-                "group relative md:p-10 p-8 rounded-[2.5rem] bg-white/60 border border-slate-200/80 backdrop-blur-md shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden",
+                "group relative md:p-10 p-8 rounded-[2.5rem] bg-white/60 border border-slate-200/80 backdrop-blur-md shadow-sm hover:shadow-2xl transition-all duration-200 flex flex-col justify-between overflow-hidden",
                 "hover:-translate-y-1 hover:bg-white",
                 item.colSpan,
               )}
@@ -101,7 +105,7 @@ export function Differentiators() {
               {/* Hover Gradient Overlay */}
               <div
                 className={cn(
-                  "absolute inset-0 bg-linear-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none",
+                  "absolute inset-0 bg-linear-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none",
                   item.color === "blue" &&
                     "from-blue-500/10 via-blue-500/5 to-transparent",
                   item.color === "indigo" &&
@@ -121,7 +125,7 @@ export function Differentiators() {
                 <div className="mb-6 w-full">
                   <div
                     className={cn(
-                      "mb-6 w-14 h-14 rounded-2xl bg-white shadow-sm border border-slate-100 flex items-center justify-center transition-all duration-300 group-hover:scale-110",
+                      "mb-6 w-14 h-14 rounded-2xl bg-white shadow-sm border border-slate-100 flex items-center justify-center transition-all duration-200 group-hover:scale-110",
                       item.color === "blue" &&
                         "text-blue-500 group-hover:bg-blue-500 group-hover:text-white group-hover:border-blue-500",
                       item.color === "indigo" &&
@@ -152,7 +156,7 @@ export function Differentiators() {
                         <div
                           key={feat}
                           className={cn(
-                            "flex items-center gap-2 px-3 py-1.5 rounded-lg border bg-white/50 backdrop-blur-sm shadow-xs transition-colors duration-300",
+                            "flex items-center gap-2 px-3 py-1.5 rounded-lg border bg-white/50 backdrop-blur-sm shadow-xs transition-colors duration-150",
                             "border-slate-200/60 group-hover:border-slate-300/60",
                             item.color === "blue" &&
                               "group-hover:bg-blue-50/50",

@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState, type CSSProperties } from "react"
-import { motion } from "motion/react"
+import { motion, useReducedMotion } from "motion/react"
 
 import { cn } from "~/lib/utils"
 
@@ -59,6 +59,8 @@ const Ray = ({
   duration,
   intensity,
 }: LightRay) => {
+  const shouldReduceMotion = useReducedMotion()
+
   return (
     <motion.div
       className="pointer-events-none absolute -top-[12%] left-[var(--ray-left)] h-[var(--light-rays-length)] w-[var(--ray-width)] origin-top -translate-x-1/2 rounded-full bg-gradient-to-b from-[color-mix(in_srgb,var(--light-rays-color)_70%,transparent)] to-transparent opacity-0 mix-blend-screen blur-[var(--light-rays-blur)]"
@@ -68,15 +70,15 @@ const Ray = ({
           "--ray-width": `${width}px`,
         } as CSSProperties
       }
-      initial={{ rotate: rotate }}
-      animate={{
+      initial={{ rotate: rotate, opacity: shouldReduceMotion ? intensity * 0.5 : 0 }}
+      animate={shouldReduceMotion ? {} : {
         opacity: [0, intensity, 0],
         rotate: [rotate - swing, rotate + swing, rotate - swing],
       }}
-      transition={{
+      transition={shouldReduceMotion ? {} : {
         duration: duration,
         repeat: Infinity,
-        ease: "easeInOut",
+        ease: [0.455, 0.03, 0.515, 0.955], // ease-in-out-quad
         delay: delay,
         repeatDelay: duration * 0.1,
       }}
@@ -89,7 +91,7 @@ export function LightRays({
   style,
   count = 7,
   color = "rgba(160, 210, 255, 0.2)",
-  blur = 36,
+  blur = 16,
   speed = 14,
   length = "70vh",
   ref,

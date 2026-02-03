@@ -9,9 +9,10 @@ import {
   useRef,
   useState,
 } from "react"
-import { motion, MotionProps, useInView } from "motion/react"
+import { motion, MotionProps, useInView, useReducedMotion } from "motion/react"
 
 import { cn } from "~/lib/utils"
+import { easing, duration } from "~/lib/animation"
 
 interface SequenceContextValue {
   completeItem: (index: number) => void
@@ -45,6 +46,7 @@ export const AnimatedSpan = ({
     amount: 0.3,
     once: true,
   })
+  const shouldReduceMotion = useReducedMotion()
 
   const sequence = useSequence()
   const itemIndex = useItemIndex()
@@ -63,9 +65,9 @@ export const AnimatedSpan = ({
   return (
     <motion.div
       ref={elementRef}
-      initial={{ opacity: 0, y: -5 }}
-      animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: -5 }}
-      transition={{ duration: 0.3, delay: sequence ? 0 : delay / 1000 }}
+      initial={shouldReduceMotion ? { opacity: 1, transform: "translateY(0px)" } : { opacity: 0, transform: "translateY(-5px)" }}
+      animate={shouldAnimate ? { opacity: 1, transform: "translateY(0px)" } : { opacity: 0, transform: "translateY(-5px)" }}
+      transition={{ duration: duration.normal, delay: sequence ? 0 : delay / 1000, ease: easing.easeOut }}
       className={cn("grid text-sm font-normal tracking-tight", className)}
       onAnimationComplete={() => {
         if (!sequence) return
@@ -91,7 +93,7 @@ interface TypingAnimationProps extends MotionProps {
 export const TypingAnimation = ({
   children,
   className,
-  duration = 60,
+  duration: typingDuration = 60,
   delay = 0,
   as: Component = "span",
   startOnView = true,
@@ -101,6 +103,8 @@ export const TypingAnimation = ({
     throw new Error("TypingAnimation: children must be a string. Received:")
   }
 
+  const shouldReduceMotion = useReducedMotion()
+
   const MotionComponent = useMemo(
     () =>
       motion.create(Component, {
@@ -109,8 +113,8 @@ export const TypingAnimation = ({
     [Component]
   )
 
-  const [displayedText, setDisplayedText] = useState<string>("")
-  const [started, setStarted] = useState(false)
+  const [displayedText, setDisplayedText] = useState<string>(shouldReduceMotion ? children : "")
+  const [started, setStarted] = useState(shouldReduceMotion ? true : false)
   const elementRef = useRef<HTMLElement | null>(null)
   const isInView = useInView(elementRef as React.RefObject<Element>, {
     amount: 0.3,
@@ -121,6 +125,8 @@ export const TypingAnimation = ({
   const itemIndex = useItemIndex()
 
   useEffect(() => {
+    if (shouldReduceMotion) return
+
     if (sequence && itemIndex !== null) {
       if (!sequence.sequenceStarted) return
       if (started) return
@@ -147,10 +153,11 @@ export const TypingAnimation = ({
     sequence?.activeIndex,
     sequence?.sequenceStarted,
     itemIndex,
+    shouldReduceMotion,
   ])
 
   useEffect(() => {
-    if (!started) return
+    if (!started || shouldReduceMotion) return
 
     let i = 0
     const typingEffect = setInterval(() => {
@@ -163,12 +170,12 @@ export const TypingAnimation = ({
           sequence.completeItem(itemIndex)
         }
       }
-    }, duration)
+    }, typingDuration)
 
     return () => {
       clearInterval(typingEffect)
     }
-  }, [children, duration, started])
+  }, [children, typingDuration, started, shouldReduceMotion])
 
   return (
     <MotionComponent
