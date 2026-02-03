@@ -25,7 +25,7 @@ export function Hero() {
           initial={initial}
           animate={animate}
           transition={{ duration: duration.fast, delay: stagger.normal, ease: easing.easeOut }}
-          className="text-6xl md:text-8xl font-bold tracking-tight text-slate-900 leading-[1.05] font-display"
+          className="text-6xl md:text-8xl font-bold tracking-tight text-slate-900 leading-[1.05] font-display text-balance"
         >
           <span className="bg-clip-text text-transparent bg-linear-to-br from-indigo-500 to-blue-600">
             cua
@@ -61,13 +61,13 @@ export function Hero() {
         >
           <Link
             href="#"
-            className="h-14 px-8 rounded-full bg-slate-900 text-white font-semibold text-lg flex items-center gap-2 hover:bg-slate-800 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200"
+            className="h-14 px-8 rounded-full bg-slate-900 text-white font-semibold text-lg flex items-center gap-2 hover:bg-slate-800 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
           >
             Get started <ArrowRight className="w-5 h-5" />
           </Link>
           <Link
             href="#"
-            className="h-14 px-8 rounded-full bg-white border border-slate-200 text-slate-900 font-semibold text-lg flex items-center gap-2 hover:bg-slate-50 hover:border-slate-300 transition-all duration-200"
+            className="h-14 px-8 rounded-full bg-white border border-slate-200 text-slate-900 font-semibold text-lg flex items-center gap-2 hover:bg-slate-50 hover:border-slate-300 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
           >
             <PlayCircle className="w-5 h-5 text-slate-500" />
             Book a demo
@@ -87,6 +87,8 @@ export function Hero() {
             <img
               src="/frontierai.png"
               alt="FrontierAI"
+              width={80}
+              height={24}
               className="h-6 w-auto object-contain"
             />
 
@@ -94,6 +96,8 @@ export function Hero() {
             <img
               src="/agentlab-logo-small.png"
               alt="AgentLab"
+              width={80}
+              height={24}
               className="h-6 w-auto object-contain"
             />
 
@@ -101,6 +105,8 @@ export function Hero() {
             <img
               src="/Autocorp-ai-TM-White.svg"
               alt="AutoCorp"
+              width={80}
+              height={20}
               className="h-5 w-auto object-contain invert"
             />
           </div>

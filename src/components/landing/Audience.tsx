@@ -67,7 +67,7 @@ export function Audience() {
               whileInView={animate}
               viewport={{ once: true }}
               transition={{ delay: stagger.normal, duration: duration.fast, ease: easing.easeOut }}
-              className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight font-display"
+              className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight font-display text-balance"
             >
               Built for the builders.
             </motion.h2>
@@ -91,7 +91,7 @@ export function Audience() {
             >
               <Link
                 href="#"
-                className="inline-flex items-center gap-2 text-indigo-600 font-semibold hover:text-indigo-700 transition-colors duration-150 group"
+                className="inline-flex items-center gap-2 text-indigo-600 font-semibold hover:text-indigo-700 transition-colors duration-150 group rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
               >
                 Read the technical manifesto{" "}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-150" />

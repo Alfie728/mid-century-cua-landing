@@ -18,7 +18,7 @@ export function Footer() {
           <div className="col-span-2 lg:col-span-2 flex flex-col items-start">
             <Link
               href="/"
-              className="inline-block text-2xl font-bold text-slate-900 mb-6 font-display tracking-tight hover:opacity-80 transition-opacity"
+              className="inline-block text-2xl font-bold text-slate-900 mb-6 font-display tracking-tight hover:opacity-80 transition-opacity rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
             >
               MidCentury
             </Link>
@@ -29,19 +29,22 @@ export function Footer() {
             <div className="flex items-center gap-3">
               <Link
                 href="#"
-                className="w-10 h-10 rounded-full bg-white/50 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-400 hover:text-indigo-600 hover:border-indigo-200 hover:bg-white hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+                aria-label="Follow us on Twitter"
+                className="w-10 h-10 rounded-full bg-white/50 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-400 hover:text-indigo-600 hover:border-indigo-200 hover:bg-white hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
               >
                 <TwitterLogo size={20} weight="fill" />
               </Link>
               <Link
                 href="#"
-                className="w-10 h-10 rounded-full bg-white/50 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-400 hover:text-indigo-600 hover:border-indigo-200 hover:bg-white hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+                aria-label="View our GitHub"
+                className="w-10 h-10 rounded-full bg-white/50 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-400 hover:text-indigo-600 hover:border-indigo-200 hover:bg-white hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
               >
                 <GithubLogo size={20} weight="fill" />
               </Link>
               <Link
                 href="#"
-                className="w-10 h-10 rounded-full bg-white/50 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-400 hover:text-indigo-600 hover:border-indigo-200 hover:bg-white hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+                aria-label="Join our Discord"
+                className="w-10 h-10 rounded-full bg-white/50 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-400 hover:text-indigo-600 hover:border-indigo-200 hover:bg-white hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
               >
                 <DiscordLogo size={20} weight="fill" />
               </Link>
@@ -57,7 +60,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="hover:text-indigo-600 transition-colors block py-0.5"
+                  className="hover:text-indigo-600 transition-colors block py-0.5 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
                 >
                   Dataset Catalog
                 </Link>
@@ -65,7 +68,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="hover:text-indigo-600 transition-colors block py-0.5"
+                  className="hover:text-indigo-600 transition-colors block py-0.5 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
                 >
                   Environment Runtime
                 </Link>
@@ -73,7 +76,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="hover:text-indigo-600 transition-colors block py-0.5"
+                  className="hover:text-indigo-600 transition-colors block py-0.5 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
                 >
                   Evaluation Suite
                 </Link>
@@ -81,7 +84,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="hover:text-indigo-600 transition-colors block py-0.5"
+                  className="hover:text-indigo-600 transition-colors block py-0.5 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
                 >
                   Documentation
                 </Link>
@@ -98,7 +101,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="hover:text-indigo-600 transition-colors block py-0.5"
+                  className="hover:text-indigo-600 transition-colors block py-0.5 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
                 >
                   About Us
                 </Link>
@@ -106,7 +109,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="hover:text-indigo-600 transition-colors block py-0.5"
+                  className="hover:text-indigo-600 transition-colors block py-0.5 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
                 >
                   Blog
                 </Link>
@@ -114,7 +117,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="hover:text-indigo-600 transition-colors block py-0.5"
+                  className="hover:text-indigo-600 transition-colors block py-0.5 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
                 >
                   Careers
                 </Link>
@@ -122,7 +125,7 @@ export function Footer() {
               <li>
                 <Link
                   href="mailto:contact@midcentury.xyz"
-                  className="hover:text-indigo-600 transition-colors block py-0.5"
+                  className="hover:text-indigo-600 transition-colors block py-0.5 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
                 >
                   Contact
                 </Link>
@@ -139,7 +142,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="hover:text-indigo-600 transition-colors block py-0.5"
+                  className="hover:text-indigo-600 transition-colors block py-0.5 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
                 >
                   Privacy Policy
                 </Link>
@@ -147,7 +150,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="hover:text-indigo-600 transition-colors block py-0.5"
+                  className="hover:text-indigo-600 transition-colors block py-0.5 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
                 >
                   Terms of Service
                 </Link>
@@ -155,7 +158,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="hover:text-indigo-600 transition-colors block py-0.5"
+                  className="hover:text-indigo-600 transition-colors block py-0.5 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
                 >
                   Cookie Policy
                 </Link>

@@ -68,7 +68,7 @@ export function Features() {
               duration: duration.fast,
               ease: easing.easeOut,
             }}
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight"
+            className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight text-balance"
           >
             What you get
           </motion.h2>

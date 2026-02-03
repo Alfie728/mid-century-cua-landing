@@ -59,7 +59,7 @@ export function Process() {
             whileInView={animate}
             viewport={{ once: true }}
             transition={{ delay: stagger.normal, duration: duration.fast, ease: easing.easeOut }}
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 font-display tracking-tight"
+            className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 font-display tracking-tight text-balance"
           >
             How it works
           </motion.h2>
