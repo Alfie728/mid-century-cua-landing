@@ -15,9 +15,21 @@ import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { easing, duration, stagger } from "@/lib/animation";
+import { accentColors, type AccentColor } from "@/lib/colors";
 
 // Combined Data Structure for the Matrix
-const MATRIX_ITEMS = [
+type MatrixItem = {
+  type: "capability" | "environment";
+  title: string;
+  desc: string;
+  icon: typeof RobotIcon;
+  color: AccentColor;
+  colSpan: string;
+  rowSpan: string;
+  image?: string;
+};
+
+const MATRIX_ITEMS: MatrixItem[] = [
   // Row 1
   {
     type: "capability",
@@ -117,7 +129,10 @@ export function UseCases() {
             transition={{ delay: stagger.normal, duration: duration.fast, ease: easing.easeOut }}
             className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 font-display tracking-tight leading-[1.1]"
           >
-            Universal <span className="text-indigo-600">Control</span>
+            Universal{" "}
+            <span className="bg-clip-text text-transparent bg-linear-to-br from-indigo-500 to-blue-600">
+              Control
+            </span>
           </motion.h2>
           <motion.p
             initial={initial}
@@ -154,16 +169,8 @@ export function UseCases() {
                     <div
                       className={cn(
                         "w-12 h-12 rounded-2xl flex items-center justify-center border transition-all duration-200 bg-white shadow-sm",
-                        item.color === "blue" &&
-                          "text-blue-600 border-blue-100 group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white",
-                        item.color === "indigo" &&
-                          "text-indigo-600 border-indigo-100 group-hover:bg-indigo-600 group-hover:border-indigo-600 group-hover:text-white",
-                        item.color === "cyan" &&
-                          "text-cyan-600 border-cyan-100 group-hover:bg-cyan-500 group-hover:border-cyan-500 group-hover:text-white",
-                        item.color === "emerald" &&
-                          "text-emerald-600 border-emerald-100 group-hover:bg-emerald-600 group-hover:border-emerald-600 group-hover:text-white",
-                        item.color === "rose" &&
-                          "text-rose-600 border-rose-100 group-hover:bg-rose-600 group-hover:border-rose-600 group-hover:text-white",
+                        accentColors[item.color].border,
+                        accentColors[item.color].iconContainer,
                       )}
                     >
                       <item.icon weight="duotone" className="w-6 h-6" />
@@ -183,16 +190,7 @@ export function UseCases() {
                   <div
                     className={cn(
                       "absolute inset-0 bg-linear-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none",
-                      item.color === "blue" &&
-                        "from-blue-500/10 via-blue-500/5 to-transparent",
-                      item.color === "indigo" &&
-                        "from-indigo-500/10 via-indigo-500/5 to-transparent",
-                      item.color === "cyan" &&
-                        "from-cyan-500/10 via-cyan-500/5 to-transparent",
-                      item.color === "emerald" &&
-                        "from-emerald-500/10 via-emerald-500/5 to-transparent",
-                      item.color === "rose" &&
-                        "from-rose-500/10 via-rose-500/5 to-transparent",
+                      accentColors[item.color].gradient,
                     )}
                   />
                 </div>
@@ -205,12 +203,7 @@ export function UseCases() {
                   <div
                     className={cn(
                       "absolute inset-0 bg-linear-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10",
-                      item.color === "amber" &&
-                        "from-amber-500/10 via-amber-500/5 to-transparent",
-                      item.color === "blue" &&
-                        "from-blue-500/10 via-blue-500/5 to-transparent",
-                      item.color === "purple" &&
-                        "from-purple-500/10 via-purple-500/5 to-transparent",
+                      accentColors[item.color].gradient,
                     )}
                   />
 
@@ -220,9 +213,7 @@ export function UseCases() {
                       <div
                         className={cn(
                           "p-2 rounded-lg bg-white/80 backdrop-blur-sm border border-slate-200 shadow-sm",
-                          item.color === "amber" && "text-amber-600",
-                          item.color === "blue" && "text-blue-600",
-                          item.color === "purple" && "text-purple-600",
+                          accentColors[item.color].textHover,
                         )}
                       >
                         <item.icon weight="duotone" className="w-5 h-5" />
@@ -239,20 +230,13 @@ export function UseCases() {
                           className={cn(
                             "flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border bg-white/50 backdrop-blur-sm shadow-xs transition-colors duration-150",
                             "border-slate-200/60 group-hover:border-slate-300/60",
-                            item.color === "blue" &&
-                              "group-hover:bg-blue-50/50",
-                            item.color === "amber" &&
-                              "group-hover:bg-amber-50/50",
-                            item.color === "purple" &&
-                              "group-hover:bg-purple-50/50",
+                            accentColors[item.color].badgeHover,
                           )}
                         >
                           <CheckCircleIcon
                             className={cn(
                               "w-3.5 h-3.5 shrink-0",
-                              item.color === "blue" && "text-blue-500",
-                              item.color === "amber" && "text-amber-500",
-                              item.color === "purple" && "text-purple-500",
+                              accentColors[item.color].text,
                             )}
                             weight="fill"
                           />

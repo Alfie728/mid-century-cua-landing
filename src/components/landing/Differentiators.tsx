@@ -11,8 +11,16 @@ import {
 import { motion, useReducedMotion } from "motion/react";
 import { duration, easing, stagger } from "@/lib/animation";
 import { cn } from "@/lib/utils";
+import { accentColors, type AccentColor } from "@/lib/colors";
 
-const DIFFERENTIATORS = [
+const DIFFERENTIATORS: Array<{
+  icon: typeof Stack;
+  title: string;
+  desc: string;
+  color: AccentColor;
+  colSpan: string;
+  subFeatures?: string[];
+}> = [
   {
     icon: Stack,
     title: "Environment-first",
@@ -80,7 +88,11 @@ export function Differentiators() {
             }}
             className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight font-display text-balance"
           >
-            Why CUA?
+            Why{" "}
+            <span className="bg-clip-text text-transparent bg-linear-to-br from-indigo-500 to-blue-600">
+              CUA
+            </span>
+            ?
           </motion.h2>
           <motion.p
             initial={initial}
@@ -120,16 +132,7 @@ export function Differentiators() {
               <div
                 className={cn(
                   "absolute inset-0 bg-linear-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none",
-                  item.color === "blue" &&
-                    "from-blue-500/10 via-blue-500/5 to-transparent",
-                  item.color === "indigo" &&
-                    "from-indigo-500/10 via-indigo-500/5 to-transparent",
-                  item.color === "purple" &&
-                    "from-purple-500/10 via-purple-500/5 to-transparent",
-                  item.color === "emerald" &&
-                    "from-emerald-500/10 via-emerald-500/5 to-transparent",
-                  item.color === "cyan" &&
-                    "from-cyan-500/10 via-cyan-500/5 to-transparent",
+                  accentColors[item.color].gradient,
                 )}
               />
 
@@ -140,16 +143,7 @@ export function Differentiators() {
                   <div
                     className={cn(
                       "mb-6 w-14 h-14 rounded-2xl bg-white shadow-sm border border-slate-100 flex items-center justify-center transition-all duration-200 group-hover:scale-110",
-                      item.color === "blue" &&
-                        "text-blue-500 group-hover:bg-blue-500 group-hover:text-white group-hover:border-blue-500",
-                      item.color === "indigo" &&
-                        "text-indigo-500 group-hover:bg-indigo-500 group-hover:text-white group-hover:border-indigo-500",
-                      item.color === "purple" &&
-                        "text-purple-500 group-hover:bg-purple-500 group-hover:text-white group-hover:border-purple-500",
-                      item.color === "emerald" &&
-                        "text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-500",
-                      item.color === "cyan" &&
-                        "text-cyan-500 group-hover:bg-cyan-500 group-hover:text-white group-hover:border-cyan-500",
+                      accentColors[item.color].iconContainer,
                     )}
                   >
                     <item.icon className="w-7 h-7" weight="duotone" />
@@ -172,20 +166,13 @@ export function Differentiators() {
                           className={cn(
                             "flex items-center gap-2 px-3 py-1.5 rounded-lg border bg-white/50 backdrop-blur-sm shadow-xs transition-colors duration-150",
                             "border-slate-200/60 group-hover:border-slate-300/60",
-                            item.color === "blue" &&
-                              "group-hover:bg-blue-50/50",
-                            item.color === "emerald" &&
-                              "group-hover:bg-emerald-50/50",
-                            item.color === "cyan" &&
-                              "group-hover:bg-cyan-50/50",
+                            accentColors[item.color].badgeHover,
                           )}
                         >
                           <CheckCircle
                             className={cn(
                               "w-4 h-4 shrink-0",
-                              item.color === "blue" && "text-blue-500",
-                              item.color === "emerald" && "text-emerald-500",
-                              item.color === "cyan" && "text-cyan-500",
+                              accentColors[item.color].text,
                             )}
                             weight="fill"
                           />

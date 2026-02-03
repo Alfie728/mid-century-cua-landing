@@ -14,6 +14,7 @@ import {
 import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { duration, easing, stagger } from "@/lib/animation";
+import { accentColors } from "@/lib/colors";
 
 export function Features() {
   const shouldReduceMotion = useReducedMotion();
@@ -43,7 +44,9 @@ export function Features() {
             className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight text-balance"
           >
             Everything you need to build <br />
-            <span className="text-indigo-600">General Agents.</span>
+            <span className="bg-clip-text text-transparent bg-linear-to-br from-indigo-500 to-blue-600">
+              General Agents.
+            </span>
           </motion.h2>
 
           <motion.p
@@ -135,7 +138,7 @@ export function Features() {
                 instrumentation.
               </p>
               {/* Visual: Terminal/Sandbox */}
-              <div className="relative w-full h-32 bg-[#1e1e1e] rounded-t-2xl border-t border-x border-slate-800 p-4 font-mono text-[10px] text-slate-300 overflow-hidden">
+              <div className="relative w-full h-32 bg-surface-dark rounded-t-2xl border-t border-x border-slate-800 p-4 font-mono text-[10px] text-slate-300 overflow-hidden">
                 <div className="text-green-400">$ start-env --gym</div>
                 <div className="text-slate-500">
                   Initializing Ubuntu 22.04...

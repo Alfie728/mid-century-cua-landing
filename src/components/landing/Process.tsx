@@ -10,8 +10,15 @@ import {
 import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { easing, duration, stagger } from "@/lib/animation";
+import { accentColors, type AccentColor } from "@/lib/colors";
 
-const STEPS = [
+const STEPS: Array<{
+  number: string;
+  title: string;
+  desc: string;
+  icon: typeof Desktop;
+  color: AccentColor;
+}> = [
   {
     number: "01",
     title: "Spin up desktops",
@@ -86,23 +93,14 @@ export function Process() {
                   <div
                     className={cn(
                       "absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-linear-to-br",
-                      step.color === "blue" &&
-                        "from-blue-500/10 to-transparent",
-                      step.color === "red" && "from-red-500/10 to-transparent",
-                      step.color === "amber" &&
-                        "from-amber-500/10 to-transparent",
-                      step.color === "emerald" &&
-                        "from-emerald-500/10 to-transparent",
+                      accentColors[step.color].gradient,
                     )}
                   />
 
                   <step.icon
                     className={cn(
                       "w-10 h-10 mb-2 transition-colors duration-150",
-                      step.color === "blue" && "text-blue-500",
-                      step.color === "red" && "text-red-500",
-                      step.color === "amber" && "text-amber-500",
-                      step.color === "emerald" && "text-emerald-500",
+                      accentColors[step.color].text,
                     )}
                     weight="duotone"
                   />

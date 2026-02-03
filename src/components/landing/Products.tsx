@@ -59,17 +59,18 @@ function TrainingGraph() {
         style={{ clipPath: clipPathTemplate }}
       >
         <defs>
+          {/* Using Tailwind emerald-500 equivalent */}
           <linearGradient id="curve-gradient" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#10b981" stopOpacity="0.2" />
-            <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
+            <stop offset="0%" stopColor="oklch(0.696 0.17 162.48)" stopOpacity="0.2" />
+            <stop offset="100%" stopColor="oklch(0.696 0.17 162.48)" stopOpacity="0" />
           </linearGradient>
         </defs>
 
-        {/* Authentic Training Data Curve (Noise + Trend) */}
+        {/* Authentic Training Data Curve (Noise + Trend) - using emerald-500 */}
         <path
           d="M0,90 L5,88 L10,85 L15,87 L20,82 L25,78 L30,80 L35,70 L40,65 L45,68 L50,55 L55,45 L60,48 L65,35 L70,30 L75,32 L80,20 L85,15 L90,18 L95,12 L100,10"
           fill="none"
-          stroke="#10b981"
+          stroke="oklch(0.696 0.17 162.48)"
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -109,7 +110,11 @@ export function Products() {
             }}
             className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 tracking-tight font-display"
           >
-            The complete stack <br /> for computer-use agents.
+            The{" "}
+            <span className="bg-clip-text text-transparent bg-linear-to-br from-indigo-500 to-blue-600">
+              complete stack
+            </span>{" "}
+            <br /> for computer-use agents.
           </motion.h2>
         </div>
 
@@ -203,7 +208,7 @@ export function Products() {
               duration: duration.fast,
               ease: easing.easeOut,
             }}
-            className="md:row-span-2 rounded-[2.5rem] bg-[#0F1117] p-10 flex flex-col overflow-hidden relative group shadow-sm hover:shadow-2xl hover:shadow-indigo-500/20 hover:-translate-y-1 transition-all duration-200 border border-slate-800"
+            className="md:row-span-2 rounded-[2.5rem] bg-surface-dark p-10 flex flex-col overflow-hidden relative group shadow-sm hover:shadow-2xl hover:shadow-indigo-500/20 hover:-translate-y-1 transition-all duration-200 border border-slate-800"
           >
             {/* Dark Glass Effect */}
             <div className="absolute inset-0 bg-linear-to-b from-[#0F1117] to-slate-950" />
@@ -222,7 +227,7 @@ export function Products() {
             </div>
 
             {/* Magic UI Terminal */}
-            <div className="relative flex-1 w-full rounded-xl overflow-hidden shadow-2xl  bg-[#0F1117] min-h-[500px]">
+            <div className="relative flex-1 w-full rounded-xl overflow-hidden shadow-2xl  bg-surface-dark min-h-[500px]">
               <Terminal className="h-full w-full bg-transparent p-6 font-mono text-sm leading-relaxed">
                 <TypingAnimation className="text-slate-200 text-base">
                   start-env --os=ubuntu --gpu=true

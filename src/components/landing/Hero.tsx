@@ -15,9 +15,9 @@ export function Hero() {
   const animate = { opacity: 1, transform: "translateY(0px)" };
 
   return (
-    <section className="relative flex flex-col items-center justify-center pt-32 pb-32 px-6 overflow-hidden md:pt-48 md:pb-40 bg-linear-to-b from-transparent from-0% via-[#f1f5fb] via-70% to-[#FAFCFD] to-100%">
+    <section className="relative flex flex-col items-center justify-center pt-32 pb-32 px-6 overflow-hidden md:pt-48 md:pb-40 bg-linear-to-b from-transparent from-0% via-surface-hero via-70% to-surface-hero-end to-100%">
       {/* Light Rays Effect */}
-      <div className="absolute top-0 left-0 right-0 h-full w-full flex items-start justify-center overflow-hidden pointer-events-none -z-10 from-[#F1F5FB] to-white">
+      <div className="absolute top-0 left-0 right-0 h-full w-full flex items-start justify-center overflow-hidden pointer-events-none -z-10">
         <LightRays color="#8ec5ff" blur={16} />
       </div>
 
