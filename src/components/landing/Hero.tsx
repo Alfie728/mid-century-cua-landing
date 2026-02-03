@@ -14,22 +14,6 @@ export function Hero() {
       </div>
 
       <div className="container max-w-5xl mx-auto flex flex-col items-center text-center gap-10 relative z-10">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/50 border border-slate-200 backdrop-blur-sm shadow-sm hover:bg-white/80 transition-colors cursor-pointer group"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
-          </span>
-          <span className="text-sm font-medium text-slate-600 group-hover:text-slate-900">
-            Next-Gen Data Platform
-          </span>
-        </motion.div>
-
         {/* Heading */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}

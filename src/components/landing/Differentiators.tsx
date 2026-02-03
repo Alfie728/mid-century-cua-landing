@@ -63,16 +63,6 @@ export function Differentiators() {
     <section className="py-24 md:py-32 relative overflow-hidden font-sans">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <div className="mb-20 text-center md:text-left">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100/50 border border-purple-200 text-purple-700 text-xs font-mono font-medium uppercase tracking-wider mb-6 backdrop-blur-sm"
-          >
-            <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
-            Comparison
-          </motion.div>
-
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

@@ -1,13 +1,13 @@
 "use client";
 
-import { motion } from "motion/react";
 import {
-  Desktop,
-  Record,
-  Package,
   Brain,
-  CaretRight
+  CaretRight,
+  Desktop,
+  Package,
+  Record,
 } from "@phosphor-icons/react";
+import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 const STEPS = [
@@ -16,29 +16,29 @@ const STEPS = [
     title: "Spin up desktops",
     desc: "Windows/macOS/Linux with instrumented agents",
     icon: Desktop,
-    color: "blue"
+    color: "blue",
   },
   {
     number: "02",
     title: "Record tasks",
     desc: "Humans, scripted bots, or agents into trajectories",
     icon: Record,
-    color: "red"
+    color: "red",
   },
   {
     number: "03",
     title: "Package datasets",
     desc: "Clean, label, redact, verify",
     icon: Package,
-    color: "amber"
+    color: "amber",
   },
   {
     number: "04",
     title: "Train + evaluate",
     desc: "Offline RL / imitation / online RL with replays",
     icon: Brain,
-    color: "emerald"
-  }
+    color: "emerald",
+  },
 ];
 
 export function Process() {
@@ -49,16 +49,6 @@ export function Process() {
 
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <div className="text-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-600 text-xs font-mono font-medium uppercase tracking-wider mb-6"
-          >
-            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-            Workflow
-          </motion.div>
-
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -88,21 +78,26 @@ export function Process() {
               >
                 {/* Step Number Badge */}
                 <div className="w-28 h-28 mx-auto bg-white rounded-3xl border border-slate-200 shadow-sm flex flex-col items-center justify-center relative z-10 group-hover:scale-110 transition-all duration-300 mb-8">
-                  <div className={cn(
-                    "absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-linear-to-br",
-                    step.color === 'blue' && "from-blue-500/10 to-transparent",
-                    step.color === 'red' && "from-red-500/10 to-transparent",
-                    step.color === 'amber' && "from-amber-500/10 to-transparent",
-                    step.color === 'emerald' && "from-emerald-500/10 to-transparent",
-                  )} />
+                  <div
+                    className={cn(
+                      "absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-linear-to-br",
+                      step.color === "blue" &&
+                        "from-blue-500/10 to-transparent",
+                      step.color === "red" && "from-red-500/10 to-transparent",
+                      step.color === "amber" &&
+                        "from-amber-500/10 to-transparent",
+                      step.color === "emerald" &&
+                        "from-emerald-500/10 to-transparent",
+                    )}
+                  />
 
                   <step.icon
                     className={cn(
                       "w-10 h-10 mb-2 transition-colors duration-300",
-                      step.color === 'blue' && "text-blue-500",
-                      step.color === 'red' && "text-red-500",
-                      step.color === 'amber' && "text-amber-500",
-                      step.color === 'emerald' && "text-emerald-500",
+                      step.color === "blue" && "text-blue-500",
+                      step.color === "red" && "text-red-500",
+                      step.color === "amber" && "text-amber-500",
+                      step.color === "emerald" && "text-emerald-500",
                     )}
                     weight="duotone"
                   />

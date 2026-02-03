@@ -57,17 +57,6 @@ export function Audience() {
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-16 lg:gap-24">
           {/* Left Column: Heading & Context */}
           <div className="lg:w-1/3 ">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="flex items-center gap-2 mb-4"
-            >
-              <span className="px-3 py-1 rounded-full bg-indigo-100/50 border border-indigo-200 text-indigo-700 text-xs font-mono font-medium uppercase tracking-wider backdrop-blur-sm">
-                Audience
-              </span>
-            </motion.div>
-
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

@@ -77,17 +77,6 @@ export function Products() {
     <section className="py-32 relative overflow-hidden font-sans">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <div className="mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-2 mb-4"
-          >
-            <span className="px-3 py-1 rounded-full bg-blue-100/50 border border-blue-200 text-blue-700 text-xs font-mono font-medium uppercase tracking-wider backdrop-blur-sm">
-              Product Suite
-            </span>
-          </motion.div>
-
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
