@@ -1,4 +1,3 @@
-import { Differentiators } from "@/components/landing/Differentiators";
 import { Features } from "@/components/landing/Features";
 import { Footer } from "@/components/landing/Footer";
 import { Hero } from "@/components/landing/Hero";
@@ -16,7 +15,6 @@ export default function Home() {
       <Features />
       <Products />
       <Process />
-      <Differentiators />
       <UseCases />
       <Footer />
     </main>
