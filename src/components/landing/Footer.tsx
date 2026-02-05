@@ -20,7 +20,7 @@ export function Footer() {
               href="/"
               className="inline-block text-2xl font-bold text-slate-900 mb-6 font-display tracking-tight hover:opacity-80 transition-opacity rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3AAFFF] focus-visible:ring-offset-2"
             >
-              MidCentury
+              Traceform
             </Link>
             <p className="text-slate-500 text-sm leading-relaxed max-w-xs mb-8 text-balance">
               The infrastructure layer for computer-using agents. Capture,
@@ -169,7 +169,7 @@ export function Footer() {
 
         <div className="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-xs text-slate-400 font-mono">
-            © {new Date().getFullYear()} MidCentury Inc. All rights reserved.
+            © {new Date().getFullYear()} Traceform Inc. All rights reserved.
           </p>
         </div>
       </div>

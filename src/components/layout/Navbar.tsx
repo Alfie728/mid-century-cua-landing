@@ -1,9 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import { TraceformLogo } from "@/components/ui/TraceformLogo";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { div, header } from "motion/react-client";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -70,12 +73,12 @@ export function Navbar() {
           style={
             scrolled
               ? {
-                  background: "rgba(243, 243, 243, 0.22)",
-                  boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-                  backdropFilter: "blur(6px)",
-                  WebkitBackdropFilter: "blur(6px)",
-                  border: "1px solid rgba(243, 243, 243, 0.36)",
-                }
+                background: "rgba(243, 243, 243, 0.22)",
+                boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+                backdropFilter: "blur(6px)",
+                WebkitBackdropFilter: "blur(6px)",
+                border: "1px solid rgba(243, 243, 243, 0.36)",
+              }
               : undefined
           }
         >
@@ -83,21 +86,13 @@ export function Navbar() {
           <Link href="/" className="flex items-center gap-3 group">
             <div
               className={cn(
-                "relative flex items-center justify-center size-10 rounded-xl border transition-all duration-200 ease motion-reduce:transition-none overflow-hidden",
+                "relative flex items-center justify-center size-10 rounded-xl transition-all duration-200 ease motion-reduce:transition-none",
                 scrolled
-                  ? "bg-gradient-to-br from-[#0D8FD9] to-[#3AAFFF] border-transparent"
-                  : "bg-white/80 backdrop-blur-sm border-slate-200/80",
+                  ? "bg-transparent"
+                  : "bg-transparent",
               )}
             >
-              {/* MC Logo */}
-              <span
-                className={cn(
-                  "font-display font-bold text-lg",
-                  scrolled ? "text-white" : "text-[#0D8FD9]",
-                )}
-              >
-                MC
-              </span>
+              <TraceformLogo className="size-full" />
             </div>
             <span
               className={cn(
@@ -105,7 +100,7 @@ export function Navbar() {
                 scrolled ? "text-slate-900" : "text-slate-900",
               )}
             >
-              Mid-Century
+              Traceform
             </span>
           </Link>
 
@@ -156,7 +151,7 @@ export function Navbar() {
             </Link>
           </div>
         </div>
-      </div>
-    </header>
+      </div >
+    </header >
   );
 }

@@ -50,7 +50,7 @@ export function Hero() {
           }}
           className="text-xl md:text-2xl text-slate-500 max-w-3xl leading-relaxed"
         >
-          Mid-Century turns real computer and browser interactions into
+          Traceform turns real computer and browser interactions into
           training-ready trajectories, powering reinforcement learning
           environments for real-world work.
         </motion.p>
