@@ -126,7 +126,7 @@ export function Verticals() {
     <section className="py-24 md:py-32 relative overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl">
         {/* Header row - title left, tabs right */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
           <motion.div
             initial={initial}
             whileInView={animate}
