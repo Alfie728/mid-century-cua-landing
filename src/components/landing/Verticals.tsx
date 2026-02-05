@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   BankIcon,
   BrowserIcon,
@@ -10,9 +9,9 @@ import {
   TerminalIcon,
 } from "@phosphor-icons/react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { type SlideItem, Slideshow } from "@/components/ui/slideshow";
 import { duration, easing, stagger } from "@/lib/animation";
-import { cn } from "@/lib/utils";
-import { Slideshow, type SlideItem } from "@/components/ui/slideshow";
 
 const INDUSTRIES: SlideItem[] = [
   {
@@ -95,9 +94,27 @@ export function Verticals() {
   const [activeTab, setActiveTab] = useState<TabType>("industries");
   const [direction, setDirection] = useState(1);
   const shouldReduceMotion = useReducedMotion();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const activeTabElementRef = useRef<HTMLButtonElement>(null);
 
   const initial = shouldReduceMotion ? false : { opacity: 0, y: 20 };
   const animate = { opacity: 1, y: 0 };
+
+  useEffect(() => {
+    const container = containerRef.current;
+
+    if (activeTab && container) {
+      const activeTabElement = activeTabElementRef.current;
+
+      if (activeTabElement) {
+        const { offsetLeft, offsetWidth } = activeTabElement;
+
+        const clipLeft = offsetLeft;
+        const clipRight = offsetLeft + offsetWidth;
+        container.style.clipPath = `inset(0 ${Math.round(100 - (clipRight / container.offsetWidth) * 100)}% 0 ${Math.round((clipLeft / container.offsetWidth) * 100)}% round 9999px)`;
+      }
+    }
+  }, [activeTab]);
 
   const handleTabChange = (tab: TabType) => {
     if (tab === activeTab) return;
@@ -108,9 +125,9 @@ export function Verticals() {
   return (
     <section className="py-24 md:py-32 relative overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl">
-        {/* Header */}
-        <div className="mb-16 max-w-2xl">
-          <motion.h2
+        {/* Header row - title left, tabs right */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8">
+          <motion.div
             initial={initial}
             whileInView={animate}
             viewport={{ once: true }}
@@ -119,14 +136,43 @@ export function Verticals() {
               duration: duration.fast,
               ease: easing.easeOut,
             }}
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 font-display tracking-tight leading-[1.1]"
+            className="max-w-2xl"
           >
-            Built for{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-br from-indigo-500 to-blue-600">
-              regulated industries
-            </span>
-          </motion.h2>
-          <motion.p
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 font-display tracking-tight leading-[1.1]">
+              <AnimatePresence mode="wait">
+                {activeTab === "industries" ? (
+                  <motion.span
+                    key="industries-title"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    Built for{" "}
+                    <span className="bg-clip-text text-transparent bg-gradient-to-br from-indigo-500 to-blue-600">
+                      diverse industries
+                    </span>
+                  </motion.span>
+                ) : (
+                  <motion.span
+                    key="environments-title"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    Works across{" "}
+                    <span className="bg-clip-text text-transparent bg-gradient-to-br from-indigo-500 to-blue-600">
+                      every layer
+                    </span>
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </h2>
+          </motion.div>
+
+          {/* Tabs with clipPath animation */}
+          <motion.div
             initial={initial}
             whileInView={animate}
             viewport={{ once: true }}
@@ -135,15 +181,56 @@ export function Verticals() {
               duration: duration.fast,
               ease: easing.easeOut,
             }}
-            className="text-lg text-slate-600 leading-relaxed"
+            className="relative"
           >
-            Training data that understands compliance requirements and works
-            across every layer of the computing stack.
-          </motion.p>
+            {/* Base tabs */}
+            <div className="inline-flex bg-white/60 backdrop-blur-md rounded-full shadow-sm">
+              <button
+                ref={activeTab === "industries" ? activeTabElementRef : null}
+                type="button"
+                onClick={() => handleTabChange("industries")}
+                className="h-[34px] px-5 flex items-center text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors duration-200 cursor-pointer"
+              >
+                By Industry
+              </button>
+              <button
+                ref={activeTab === "environments" ? activeTabElementRef : null}
+                type="button"
+                onClick={() => handleTabChange("environments")}
+                className="h-[34px] px-5 flex items-center text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors duration-200 cursor-pointer"
+              >
+                By Environment
+              </button>
+            </div>
+
+            {/* Overlay with clipPath */}
+            <div
+              aria-hidden
+              ref={containerRef}
+              className="absolute inset-0 z-10 overflow-hidden transition-[clip-path] duration-300 ease-out pointer-events-none"
+            >
+              <div className="inline-flex rounded-full bg-gradient-to-r from-indigo-500 to-blue-600">
+                <button
+                  type="button"
+                  className="h-[34px] px-5 flex items-center text-sm font-medium text-white cursor-pointer"
+                  tabIndex={-1}
+                >
+                  By Industry
+                </button>
+                <button
+                  type="button"
+                  className="h-[34px] px-5 flex items-center text-sm font-medium text-white cursor-pointer"
+                  tabIndex={-1}
+                >
+                  By Environment
+                </button>
+              </div>
+            </div>
+          </motion.div>
         </div>
 
-        {/* Top-level tabs */}
-        <motion.div
+        {/* Subtitle */}
+        <motion.p
           initial={initial}
           whileInView={animate}
           viewport={{ once: true }}
@@ -152,49 +239,34 @@ export function Verticals() {
             duration: duration.fast,
             ease: easing.easeOut,
           }}
-          className="mb-12"
+          className="text-lg text-slate-500 leading-relaxed max-w-xl mb-12"
         >
-          <div className="inline-flex p-1.5 bg-white/60 backdrop-blur-md border border-slate-200/80 rounded-full shadow-sm">
-            <button
-              type="button"
-              onClick={() => handleTabChange("industries")}
-              className={cn(
-                "relative px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer",
-                activeTab === "industries"
-                  ? "text-white"
-                  : "text-slate-600 hover:text-slate-900"
-              )}
-            >
-              {activeTab === "industries" && (
-                <motion.div
-                  layoutId="activeTab"
-                  className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-blue-600 rounded-full"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
-                />
-              )}
-              <span className="relative z-10">By Industry</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => handleTabChange("environments")}
-              className={cn(
-                "relative px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer",
-                activeTab === "environments"
-                  ? "text-white"
-                  : "text-slate-600 hover:text-slate-900"
-              )}
-            >
-              {activeTab === "environments" && (
-                <motion.div
-                  layoutId="activeTab"
-                  className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-blue-600 rounded-full"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
-                />
-              )}
-              <span className="relative z-10">By Environment</span>
-            </button>
-          </div>
-        </motion.div>
+          <AnimatePresence mode="wait">
+            {activeTab === "industries" ? (
+              <motion.span
+                key="industries-desc"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                Training data that understands compliance requirements across
+                healthcare, finance, and legal workflows.
+              </motion.span>
+            ) : (
+              <motion.span
+                key="environments-desc"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                From legacy mainframes to modern SaaS, we capture interactions
+                across the entire computing stack.
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </motion.p>
 
         {/* Slideshow content */}
         <motion.div
