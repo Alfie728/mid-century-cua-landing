@@ -29,6 +29,7 @@ export function Navbar() {
     { label: "Process", href: "#process" },
     { label: "Products", href: "#products" },
     { label: "Industries", href: "#verticals" },
+    { label: "Download", href: "#download" },
   ];
 
   const handleScroll = (
