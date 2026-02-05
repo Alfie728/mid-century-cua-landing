@@ -49,7 +49,7 @@ export function Features() {
             className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight text-balance"
           >
             Everything you need to build <br />
-            <span className="bg-clip-text text-transparent bg-linear-to-br from-indigo-500 to-blue-600">
+            <span className="bg-clip-text text-transparent bg-linear-to-br from-[#0D8FD9] to-[#3AAFFF]">
               General Agents.
             </span>
           </motion.h2>

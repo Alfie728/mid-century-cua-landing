@@ -84,7 +84,7 @@ export function Navbar() {
               className={cn(
                 "relative flex items-center justify-center size-10 rounded-xl border transition-all duration-200 ease motion-reduce:transition-none overflow-hidden",
                 scrolled
-                  ? "bg-gradient-to-br from-indigo-500 to-blue-600 border-transparent"
+                  ? "bg-gradient-to-br from-[#0D8FD9] to-[#3AAFFF] border-transparent"
                   : "bg-white/80 backdrop-blur-sm border-slate-200/80",
               )}
             >
@@ -92,7 +92,7 @@ export function Navbar() {
               <span
                 className={cn(
                   "font-display font-bold text-lg",
-                  scrolled ? "text-white" : "text-indigo-600",
+                  scrolled ? "text-white" : "text-[#0D8FD9]",
                 )}
               >
                 MC
@@ -146,8 +146,8 @@ export function Navbar() {
               href="#download"
               className={cn(
                 "px-5 py-2.5 text-sm font-semibold rounded-full transition-all duration-200 ease-out motion-reduce:transition-none",
-                "bg-gradient-to-r from-indigo-500 to-blue-600 text-white",
-                "hover:shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5",
+                "bg-gradient-to-r from-[#0D8FD9] to-[#3AAFFF] text-white",
+                "hover:shadow-lg hover:shadow-[#3AAFFF]/30 hover:-translate-y-0.5",
                 "active:scale-[0.98]",
               )}
             >

@@ -26,7 +26,7 @@ export function DownloadCTA() {
           className="rounded-[2.5rem] bg-white/60 backdrop-blur-md border border-slate-200/80 p-10 md:p-16 relative overflow-hidden group"
         >
           {/* Hover gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#3AAFFF]/10 via-transparent to-[#0D8FD9]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
           <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             {/* Left content */}
@@ -43,7 +43,7 @@ export function DownloadCTA() {
                 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 tracking-tight font-display"
               >
                 Start collecting{" "}
-                <span className="bg-clip-text text-transparent bg-gradient-to-br from-indigo-500 to-purple-600">
+                <span className="bg-clip-text text-transparent bg-gradient-to-br from-[#0D8FD9] to-[#3AAFFF]">
                   trajectory data
                 </span>{" "}
                 today.
@@ -87,7 +87,7 @@ export function DownloadCTA() {
                     key={feature}
                     className="flex items-center gap-2 text-sm text-slate-600"
                   >
-                    <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#0D8FD9]" />
                     {feature}
                   </div>
                 ))}
@@ -108,7 +108,7 @@ export function DownloadCTA() {
                 <a
                   href="https://cua-platform.s3.us-east-1.amazonaws.com/Glmpse-darwin-arm64-1.0.0.zip"
                   download
-                  className="group/btn inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold text-lg shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:shadow-indigo-500/30 hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200"
+                  className="group/btn inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-[#0D8FD9] to-[#3AAFFF] text-white font-semibold text-lg shadow-lg shadow-[#3AAFFF]/30 hover:shadow-xl hover:shadow-[#3AAFFF]/40 hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200"
                 >
                   <AppleLogo className="w-6 h-6" weight="fill" />
                   Download for macOS
@@ -201,7 +201,7 @@ export function DownloadCTA() {
                           className="flex items-center justify-between text-xs py-1.5 border-b border-slate-50 last:border-0"
                         >
                           <span className="text-slate-600">{item.target}</span>
-                          <span className="px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-600 font-medium">
+                          <span className="px-2 py-0.5 rounded-full bg-sky-50 text-[#0D8FD9] font-medium">
                             {item.action}
                           </span>
                         </div>

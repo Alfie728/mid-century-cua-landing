@@ -33,7 +33,7 @@ export function Hero() {
           }}
           className="text-6xl md:text-8xl font-bold tracking-tight text-slate-900 leading-[1.05] font-display text-balance"
         >
-          <span className="bg-clip-text text-transparent bg-linear-to-br from-indigo-500 to-blue-600">
+          <span className="bg-clip-text text-transparent bg-linear-to-br from-[#0D8FD9] to-[#3AAFFF]">
             Data and evals{" "}
           </span>{" "}
           for long-horizon digital agents
@@ -68,7 +68,7 @@ export function Hero() {
         >
           <Link
             href="#download"
-            className="h-14 px-8 rounded-full bg-gradient-to-r from-indigo-500 to-blue-600 bg-slate-900 text-white font-semibold text-lg flex items-center gap-2 hover:bg-slate-800 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
+            className="h-14 px-8 rounded-full bg-gradient-to-r from-[#0D8FD9] to-[#3AAFFF] text-white font-semibold text-lg flex items-center gap-2 hover:shadow-xl hover:shadow-[#3AAFFF]/25 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3AAFFF] focus-visible:ring-offset-2"
           >
             Get started <ArrowRight className="w-5 h-5" />
           </Link>

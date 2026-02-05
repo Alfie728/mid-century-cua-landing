@@ -149,7 +149,7 @@ export function Verticals() {
                     transition={{ duration: 0.2 }}
                   >
                     Built for{" "}
-                    <span className="bg-clip-text text-transparent bg-gradient-to-br from-indigo-500 to-blue-600">
+                    <span className="bg-clip-text text-transparent bg-gradient-to-br from-[#0D8FD9] to-[#3AAFFF]">
                       diverse industries
                     </span>
                   </motion.span>
@@ -162,7 +162,7 @@ export function Verticals() {
                     transition={{ duration: 0.2 }}
                   >
                     Works across{" "}
-                    <span className="bg-clip-text text-transparent bg-gradient-to-br from-indigo-500 to-blue-600">
+                    <span className="bg-clip-text text-transparent bg-gradient-to-br from-[#0D8FD9] to-[#3AAFFF]">
                       every layer
                     </span>
                   </motion.span>
@@ -209,7 +209,7 @@ export function Verticals() {
               ref={containerRef}
               className="absolute inset-0 z-10 overflow-hidden transition-[clip-path] duration-300 ease-out pointer-events-none"
             >
-              <div className="inline-flex rounded-full bg-gradient-to-r from-indigo-500 to-blue-600">
+              <div className="inline-flex rounded-full bg-gradient-to-r from-[#0D8FD9] to-[#3AAFFF]">
                 <button
                   type="button"
                   className="h-[34px] px-5 flex items-center text-sm font-medium text-white cursor-pointer"
