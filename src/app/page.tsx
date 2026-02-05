@@ -1,11 +1,11 @@
 import { Features } from "@/components/landing/Features";
 import { Footer } from "@/components/landing/Footer";
 import { Hero } from "@/components/landing/Hero";
-import { Navbar } from "@/components/layout/Navbar";
 import { Process } from "@/components/landing/Process";
 import { Products } from "@/components/landing/Products";
 import { SocialProof } from "@/components/landing/SocialProof";
 import { Verticals } from "@/components/landing/Verticals";
+import { Navbar } from "@/components/layout/Navbar";
 
 export default function Home() {
   return (

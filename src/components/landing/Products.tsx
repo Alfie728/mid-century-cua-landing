@@ -208,75 +208,65 @@ export function Products() {
               duration: duration.fast,
               ease: easing.easeOut,
             }}
-            className="md:row-span-2 rounded-[2.5rem] bg-surface-dark p-10 flex flex-col overflow-hidden relative group shadow-sm hover:shadow-2xl hover:shadow-indigo-500/20 hover:-translate-y-1 transition-all duration-200 border border-slate-800"
+            className="md:row-span-2 rounded-[2.5rem] bg-white/60 border border-slate-200/80 p-10 flex flex-col overflow-hidden relative group shadow-sm hover:shadow-2xl hover:-translate-y-1 hover:bg-white transition-all duration-200 backdrop-blur-md"
           >
-            {/* Dark Glass Effect */}
-            <div className="absolute inset-0 bg-linear-to-b from-[#0F1117] to-slate-950" />
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-indigo-500/10 rounded-full blur-[100px] opacity-100 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
 
-            <div className="relative z-10 mb-10">
-              <div className="p-3 bg-white/10 w-fit rounded-2xl text-white mb-6 backdrop-blur-md border border-white/10">
-                <Layout className="w-8 h-8" />
+            <div className="relative z-10 mb-8">
+              <div className="h-14 w-14 rounded-2xl bg-white/80 border border-white/50 shadow-sm flex items-center justify-center text-indigo-500 mb-6 transition-all duration-200 group-hover:scale-110 group-hover:bg-indigo-500 group-hover:text-white group-hover:border-indigo-500 backdrop-blur-md">
+                <Layout className="w-7 h-7" weight="duotone" />
               </div>
-              <h3 className="text-3xl font-bold text-white mb-3 font-display">
+              <h3 className="text-3xl font-bold text-slate-900 mb-3 font-display">
                 Environments
               </h3>
-              <p className="text-slate-400 text-lg leading-relaxed">
+              <p className="text-slate-500 text-lg leading-relaxed">
                 Resettable desktop sandboxes.
               </p>
             </div>
 
-            {/* Magic UI Terminal */}
-            <div className="relative flex-1 w-full rounded-xl overflow-hidden shadow-2xl  bg-surface-dark min-h-[500px]">
-              <Terminal className="h-full w-full bg-transparent p-6 font-mono text-sm leading-relaxed">
-                <TypingAnimation className="text-slate-200 text-base">
-                  start-env --os=ubuntu --gpu=true
-                </TypingAnimation>
+            {/* Light Terminal with Animated Sequence */}
+            <Terminal
+              className="relative flex-1 w-full !bg-slate-50 !rounded-2xl !border-slate-200/60 overflow-hidden flex flex-col shadow-inner group-hover:!bg-white transition-colors duration-200 min-h-[400px] !max-w-none"
+              sequence={true}
+              startOnView={true}
+            >
+              <TypingAnimation className="text-slate-800 font-medium">
+                $ start-env --os=ubuntu --gpu=true
+              </TypingAnimation>
+              <AnimatedSpan className="text-emerald-600 mt-2">
+                ➜ Initializing sandbox environment...
+              </AnimatedSpan>
+              <AnimatedSpan className="text-emerald-600">
+                ➜ Mounting VNC filesystem...
+              </AnimatedSpan>
+              <AnimatedSpan className="text-blue-600">
+                ℹ GPU acceleration enabled (RTX 4090)
+              </AnimatedSpan>
+              <AnimatedSpan className="text-slate-500">
+                ➜ Loading generic-agent-v4...
+              </AnimatedSpan>
+              <AnimatedSpan className="text-slate-500">
+                ➜ Setting viewport: 1920x1080
+              </AnimatedSpan>
+              <AnimatedSpan className="text-emerald-600 font-semibold">
+                ✔ Ready. Connect at port 5900.
+              </AnimatedSpan>
+              <TypingAnimation className="text-slate-500 mt-4">
+                $ agent run --task="book flight"
+              </TypingAnimation>
+              <AnimatedSpan className="text-indigo-600">
+                &gt; Navigating to kayak.com...
+              </AnimatedSpan>
+              <AnimatedSpan className="text-indigo-600">
+                &gt; Selecting date: 2024-12-15
+              </AnimatedSpan>
+            </Terminal>
 
-                <AnimatedSpan delay={1500} className="text-emerald-500">
-                  ➜ Initializing sandbox environment...
-                </AnimatedSpan>
-
-                <AnimatedSpan delay={2000} className="text-emerald-500">
-                  ➜ Mounting VNC filesystem...
-                </AnimatedSpan>
-
-                <AnimatedSpan delay={2500} className="text-blue-400">
-                  ℹ GPU acceleration enabled (RTX 4090)
-                </AnimatedSpan>
-
-                <AnimatedSpan delay={3000} className="text-slate-400">
-                  ➜ Loading generic-agent-v4...
-                </AnimatedSpan>
-
-                <AnimatedSpan delay={3500} className="text-slate-400">
-                  ➜ Setting viewport: 1920x1080
-                </AnimatedSpan>
-
-                <AnimatedSpan
-                  delay={4200}
-                  className="text-emerald-500 font-bold"
-                >
-                  ✔ Ready. Connect at port 5900.
-                </AnimatedSpan>
-
-                <AnimatedSpan delay={5000} className="text-slate-500 mt-4">
-                  $ agent run --task="book flight"
-                </AnimatedSpan>
-                <AnimatedSpan delay={5800} className="text-blue-300">
-                  &gt; Navigating to kayak.com...
-                </AnimatedSpan>
-                <AnimatedSpan delay={6500} className="text-blue-300">
-                  &gt; Selecting date: 2024-12-15
-                </AnimatedSpan>
-              </Terminal>
-            </div>
-
-            <div className="mt-8 flex flex-wrap gap-2 relative z-10">
+            <div className="mt-6 flex flex-wrap gap-2 relative z-10">
               {["Ubuntu", "Windows 11", "macOS"].map((os) => (
                 <span
                   key={os}
-                  className="px-3 py-1 rounded-full bg-white/5 text-slate-300 text-sm border border-white/10 hover:bg-white/10 hover:border-white/20 transition-colors duration-150 cursor-default"
+                  className="px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 text-sm border border-slate-200 hover:bg-slate-200 hover:border-slate-300 transition-colors duration-150 cursor-default"
                 >
                   {os}
                 </span>
