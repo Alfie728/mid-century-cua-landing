@@ -1,3 +1,4 @@
+import { DownloadCTA } from "@/components/landing/DownloadCTA";
 import { Features } from "@/components/landing/Features";
 import { Footer } from "@/components/landing/Footer";
 import { Hero } from "@/components/landing/Hero";
@@ -24,6 +25,9 @@ export default function Home() {
       </section>
       <section id="verticals">
         <Verticals />
+      </section>
+      <section id="download">
+        <DownloadCTA />
       </section>
       <Footer />
     </main>

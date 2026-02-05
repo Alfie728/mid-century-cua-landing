@@ -8,9 +8,9 @@ import {
   Record,
 } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "motion/react";
+import { duration, easing, stagger } from "@/lib/animation";
+import { type AccentColor, accentColors } from "@/lib/colors";
 import { cn } from "@/lib/utils";
-import { easing, duration, stagger } from "@/lib/animation";
-import { accentColors, type AccentColor } from "@/lib/colors";
 
 const STEPS: Array<{
   number: string;
@@ -51,21 +51,24 @@ const STEPS: Array<{
 
 export function Process() {
   const shouldReduceMotion = useReducedMotion();
-  const initial = shouldReduceMotion ? false : { opacity: 0, transform: "translateY(20px)" };
+  const initial = shouldReduceMotion
+    ? false
+    : { opacity: 0, transform: "translateY(20px)" };
   const animate = { opacity: 1, transform: "translateY(0px)" };
 
   return (
     <section className="py-24 md:py-32 relative overflow-hidden font-sans">
-      {/* Background Elements */}
-      <div className="absolute top-1/2 left-0 w-full h-[500px] -translate-y-1/2 bg-slate-50/50 -skew-y-3 -z-10" />
-
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <div className="text-center mb-20">
           <motion.h2
             initial={initial}
             whileInView={animate}
             viewport={{ once: true }}
-            transition={{ delay: stagger.normal, duration: duration.fast, ease: easing.easeOut }}
+            transition={{
+              delay: stagger.normal,
+              duration: duration.fast,
+              ease: easing.easeOut,
+            }}
             className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 font-display tracking-tight text-balance"
           >
             How it works
@@ -85,7 +88,11 @@ export function Process() {
                 initial={initial}
                 whileInView={animate}
                 viewport={{ once: true }}
-                transition={{ delay: index * stagger.slow, duration: duration.fast, ease: easing.easeOut }}
+                transition={{
+                  delay: index * stagger.slow,
+                  duration: duration.fast,
+                  ease: easing.easeOut,
+                }}
                 className="group relative"
               >
                 {/* Step Number Badge */}

@@ -56,20 +56,23 @@ export function Hero() {
         </motion.p>
 
         {/* CTAs */}
-        {/*<motion.div
+        <motion.div
           initial={initial}
           animate={animate}
-          transition={{ duration: duration.fast, delay: stagger.normal * 3, ease: easing.easeOut }}
+          transition={{
+            duration: duration.fast,
+            delay: stagger.normal * 3,
+            ease: easing.easeOut,
+          }}
           className="flex flex-col sm:flex-row items-center gap-4 mt-6"
         >
           <Link
-            href="#"
-            className="h-14 px-8 rounded-full bg-slate-900 text-white font-semibold text-lg flex items-center gap-2 hover:bg-slate-800 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
+            href="#download"
+            className="h-14 px-8 rounded-full bg-gradient-to-r from-indigo-500 to-blue-600 bg-slate-900 text-white font-semibold text-lg flex items-center gap-2 hover:bg-slate-800 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
           >
             Get started <ArrowRight className="w-5 h-5" />
           </Link>
-
-        </motion.div>*/}
+        </motion.div>
       </div>
     </section>
   );

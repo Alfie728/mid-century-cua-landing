@@ -143,7 +143,7 @@ export function Navbar() {
               About
             </Link>
             <Link
-              href="#contact"
+              href="#download"
               className={cn(
                 "px-5 py-2.5 text-sm font-semibold rounded-full transition-all duration-200 ease-out motion-reduce:transition-none",
                 "bg-gradient-to-r from-indigo-500 to-blue-600 text-white",
@@ -151,7 +151,7 @@ export function Navbar() {
                 "active:scale-[0.98]",
               )}
             >
-              Get in touch
+              Get Started
             </Link>
           </div>
         </div>
