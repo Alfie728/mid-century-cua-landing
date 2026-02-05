@@ -10,8 +10,8 @@ import {
 } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "motion/react";
 import { duration, easing, stagger } from "@/lib/animation";
+import { type AccentColor, accentColors } from "@/lib/colors";
 import { cn } from "@/lib/utils";
-import { accentColors, type AccentColor } from "@/lib/colors";
 
 const DIFFERENTIATORS: Array<{
   icon: typeof Stack;

@@ -5,6 +5,7 @@ import { Process } from "@/components/landing/Process";
 import { Products } from "@/components/landing/Products";
 import { SocialProof } from "@/components/landing/SocialProof";
 import { UseCases } from "@/components/landing/UseCases";
+import { Differentiators } from "~/components/landing/Differentiators";
 
 export default function Home() {
   return (
@@ -13,8 +14,8 @@ export default function Home() {
       <Hero />
       <SocialProof />
       <Features />
-      <Products />
       <Process />
+      <Products />
       <UseCases />
       <Footer />
     </main>

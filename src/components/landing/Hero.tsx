@@ -34,9 +34,9 @@ export function Hero() {
           className="text-6xl md:text-8xl font-bold tracking-tight text-slate-900 leading-[1.05] font-display text-balance"
         >
           <span className="bg-clip-text text-transparent bg-linear-to-br from-indigo-500 to-blue-600">
-            Mid-Century
+            Data and evals{" "}
           </span>{" "}
-          develops data and evals for long-horizon digital agents
+          for long-horizon digital agents
         </motion.h1>
 
         {/* Subtext */}
@@ -50,9 +50,9 @@ export function Hero() {
           }}
           className="text-xl md:text-2xl text-slate-500 max-w-3xl leading-relaxed"
         >
-          We turn real computer and browser interactions into training-ready
-          trajectories, powering reinforcement learning environments for
-          real-world work.
+          Mid-Century turns real computer and browser interactions into
+          training-ready trajectories, powering reinforcement learning
+          environments for real-world work.
         </motion.p>
 
         {/* CTAs */}
