@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 
 const TEAMS = [
   { name: "UI Agents", icon: Robot, color: "blue" },
-  { name: "Workflow Automation", icon: TreeStructure, color: "indigo" },
+  { name: "Workflow Automation", icon: TreeStructure, color: "sky" },
   { name: "OSWorld-style Evals", icon: Globe, color: "emerald" },
   { name: "Enterprise RPA", icon: Buildings, color: "slate" },
   { name: "Frontier Labs", icon: Flask, color: "purple" },
@@ -39,7 +39,7 @@ const TeamCard = ({
       className={cn(
         "relative cursor-default overflow-hidden rounded-full py-2 px-4 transition-[transform,background-color,border-color,box-shadow] duration-150 ease-out",
         "border border-slate-200/60 bg-white/60 backdrop-blur-md",
-        "hover:bg-white hover:shadow-lg hover:shadow-indigo-500/5 hover:-translate-y-0.5 hover:border-indigo-100",
+        "hover:bg-white hover:shadow-lg hover:shadow-[#3AAFFF]/10 hover:-translate-y-0.5 hover:border-[#3AAFFF]/30",
       )}
     >
       <div className="flex flex-row items-center gap-3">
@@ -47,7 +47,7 @@ const TeamCard = ({
           className={cn(
             "flex shrink-0 items-center justify-center w-8 h-8 rounded-full",
             color === "blue" && "bg-blue-50 text-blue-600",
-            color === "indigo" && "bg-indigo-50 text-indigo-600",
+            color === "sky" && "bg-sky-50 text-[#0D8FD9]",
             color === "emerald" && "bg-emerald-50 text-emerald-600",
             color === "slate" && "bg-slate-100 text-slate-600",
             color === "purple" && "bg-purple-50 text-purple-600",

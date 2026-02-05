@@ -15,6 +15,11 @@ import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { duration, easing, stagger } from "@/lib/animation";
 import { accentColors } from "@/lib/colors";
+import {
+  AnimatedSpan,
+  Terminal,
+  TypingAnimation,
+} from "@/components/ui/terminal";
 
 export function Features() {
   const shouldReduceMotion = useReducedMotion();
@@ -44,7 +49,7 @@ export function Features() {
             className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight text-balance"
           >
             Everything you need to build <br />
-            <span className="bg-clip-text text-transparent bg-linear-to-br from-indigo-500 to-blue-600">
+            <span className="bg-clip-text text-transparent bg-linear-to-br from-[#0D8FD9] to-[#3AAFFF]">
               General Agents.
             </span>
           </motion.h2>
@@ -137,15 +142,25 @@ export function Features() {
                 Deterministic, resettable sandboxes with step-level
                 instrumentation.
               </p>
-              {/* Visual: Terminal/Sandbox */}
-              <div className="relative w-full h-32 bg-surface-dark rounded-t-2xl border-t border-x border-slate-800 p-4 font-mono text-[10px] text-slate-300 overflow-hidden">
-                <div className="text-green-400">$ start-env --gym</div>
-                <div className="text-slate-500">
+              {/* Visual: Terminal/Sandbox with Animation */}
+              <Terminal
+                className="relative w-full h-32 !bg-slate-50 !rounded-t-2xl !rounded-b-none !border-t !border-x !border-b-0 !border-slate-200 overflow-hidden !max-w-none [&>div:first-child]:hidden [&>pre]:p-4 [&>pre]:pt-2"
+                sequence={true}
+                startOnView={true}
+              >
+                <TypingAnimation className="text-slate-800 font-medium !text-[10px]">
+                  $ start-env --gym
+                </TypingAnimation>
+                <AnimatedSpan className="text-slate-500 !text-[10px]">
                   Initializing Ubuntu 22.04...
-                </div>
-                <div className="text-blue-400">Connected to VNC:5900</div>
-                <div className="text-slate-500">Reward hook active.</div>
-              </div>
+                </AnimatedSpan>
+                <AnimatedSpan className="text-blue-600 !text-[10px]">
+                  Connected to VNC:5900
+                </AnimatedSpan>
+                <AnimatedSpan className="text-emerald-600 !text-[10px]">
+                  Reward hook active.
+                </AnimatedSpan>
+              </Terminal>
             </div>
           </motion.div>
 
