@@ -119,8 +119,8 @@ export function Navbar() {
                   className={cn(
                     "px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-150 ease motion-reduce:transition-none",
                     scrolled
-                      ? "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
-                      : "text-slate-600 hover:text-slate-900",
+                      ? "text-slate-600 hover:text-[#0D8FD9] hover:bg-[#3AAFFF]/10"
+                      : "text-slate-600 hover:text-[#0D8FD9] hover:bg-[#3AAFFF]/10",
                   )}
                 >
                   {link.label}
@@ -136,8 +136,8 @@ export function Navbar() {
               className={cn(
                 "hidden sm:block px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-150 ease motion-reduce:transition-none",
                 scrolled
-                  ? "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
-                  : "text-slate-600 hover:text-slate-900",
+                  ? "text-slate-600 hover:text-[#0D8FD9] hover:bg-[#3AAFFF]/10"
+                  : "text-slate-600 hover:text-[#0D8FD9] hover:bg-[#3AAFFF]/10",
               )}
             >
               About
