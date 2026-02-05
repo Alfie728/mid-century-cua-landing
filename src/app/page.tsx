@@ -4,8 +4,7 @@ import { Hero } from "@/components/landing/Hero";
 import { Process } from "@/components/landing/Process";
 import { Products } from "@/components/landing/Products";
 import { SocialProof } from "@/components/landing/SocialProof";
-import { UseCases } from "@/components/landing/UseCases";
-import { Differentiators } from "~/components/landing/Differentiators";
+import { Verticals } from "@/components/landing/Verticals";
 
 export default function Home() {
   return (
@@ -16,7 +15,7 @@ export default function Home() {
       <Features />
       <Process />
       <Products />
-      <UseCases />
+      <Verticals />
       <Footer />
     </main>
   );
