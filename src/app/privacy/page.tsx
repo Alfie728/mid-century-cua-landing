@@ -24,8 +24,8 @@ export default function PrivacyPolicy() {
             </h2>
             <p>
               Traceform Inc. (&quot;Traceform,&quot; &quot;we,&quot;
-              &quot;our,&quot; or &quot;us&quot;) is committed to protecting your
-              privacy. This Privacy Policy explains how we collect, use,
+              &quot;our,&quot; or &quot;us&quot;) is committed to protecting
+              your privacy. This Privacy Policy explains how we collect, use,
               disclose, and safeguard your information when you use our products
               and services, including the Glmpse desktop application and our
               website.
@@ -65,7 +65,9 @@ export default function PrivacyPolicy() {
             </h2>
             <ul className="list-disc pl-6 space-y-2">
               <li>To provide, maintain, and improve our services.</li>
-              <li>To communicate with you about updates, support, and notices.</li>
+              <li>
+                To communicate with you about updates, support, and notices.
+              </li>
               <li>To ensure the security and integrity of our platform.</li>
               <li>To comply with legal obligations.</li>
             </ul>
@@ -77,8 +79,8 @@ export default function PrivacyPolicy() {
             </h2>
             <p>
               Trajectory data collected by Glmpse is stored locally on your
-              device by default. If you choose to upload data to our platform, it
-              is encrypted in transit and at rest using industry-standard
+              device by default. If you choose to upload data to our platform,
+              it is encrypted in transit and at rest using industry-standard
               encryption protocols. We implement appropriate technical and
               organizational measures to protect your personal information.
             </p>
@@ -94,7 +96,9 @@ export default function PrivacyPolicy() {
             </p>
             <ul className="list-disc pl-6 space-y-2 mt-3">
               <li>With your explicit consent.</li>
-              <li>With service providers who assist in operating our platform.</li>
+              <li>
+                With service providers who assist in operating our platform.
+              </li>
               <li>When required by law or to protect our legal rights.</li>
             </ul>
           </section>
@@ -106,13 +110,13 @@ export default function PrivacyPolicy() {
             <p>
               Depending on your jurisdiction, you may have the right to access,
               correct, delete, or port your personal data. You may also have the
-              right to opt out of certain data processing activities. To exercise
-              these rights, contact us at{" "}
+              right to opt out of certain data processing activities. To
+              exercise these rights, contact us at{" "}
               <a
-                href="mailto:contact@midcentury.xyz"
+                href="mailto:contact@traceform.xyz"
                 className="text-[#0D8FD9] hover:underline"
               >
-                contact@midcentury.xyz
+                contact@traceform.xyz
               </a>
               .
             </p>
@@ -123,9 +127,9 @@ export default function PrivacyPolicy() {
               7. Changes to This Policy
             </h2>
             <p>
-              We may update this Privacy Policy from time to time. We will notify
-              you of any material changes by posting the new policy on this page
-              and updating the &quot;Last updated&quot; date.
+              We may update this Privacy Policy from time to time. We will
+              notify you of any material changes by posting the new policy on
+              this page and updating the &quot;Last updated&quot; date.
             </p>
           </section>
 
@@ -137,10 +141,10 @@ export default function PrivacyPolicy() {
               If you have questions about this Privacy Policy, please contact us
               at{" "}
               <a
-                href="mailto:contact@midcentury.xyz"
+                href="mailto:contact@traceform.xyz"
                 className="text-[#0D8FD9] hover:underline"
               >
-                contact@midcentury.xyz
+                contact@traceform.xyz
               </a>
               .
             </p>

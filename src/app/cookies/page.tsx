@@ -23,8 +23,8 @@ export default function CookiePolicy() {
               1. What Are Cookies
             </h2>
             <p>
-              Cookies are small text files stored on your device when you visit a
-              website. They are widely used to make websites work more
+              Cookies are small text files stored on your device when you visit
+              a website. They are widely used to make websites work more
               efficiently and to provide information to site owners.
             </p>
           </section>
@@ -36,9 +36,9 @@ export default function CookiePolicy() {
             <p>Traceform uses cookies for the following purposes:</p>
             <ul className="list-disc pl-6 space-y-2 mt-3">
               <li>
-                <strong>Essential Cookies:</strong> Required for the operation of
-                our website and services. These include cookies that enable you
-                to log in and access secure areas.
+                <strong>Essential Cookies:</strong> Required for the operation
+                of our website and services. These include cookies that enable
+                you to log in and access secure areas.
               </li>
               <li>
                 <strong>Analytics Cookies:</strong> Help us understand how
@@ -107,10 +107,10 @@ export default function CookiePolicy() {
               If you have questions about our use of cookies, please contact us
               at{" "}
               <a
-                href="mailto:contact@midcentury.xyz"
+                href="mailto:contact@traceform.xyz"
                 className="text-[#0D8FD9] hover:underline"
               >
-                contact@midcentury.xyz
+                contact@traceform.xyz
               </a>
               .
             </p>

@@ -25,10 +25,10 @@ export default function TermsOfService() {
             <p>
               By accessing or using the services provided by Traceform Inc.
               (&quot;Traceform,&quot; &quot;we,&quot; &quot;our,&quot; or
-              &quot;us&quot;), including the Glmpse desktop application, website,
-              and related services (collectively, the &quot;Services&quot;), you
-              agree to be bound by these Terms of Service. If you do not agree,
-              do not use the Services.
+              &quot;us&quot;), including the Glmpse desktop application,
+              website, and related services (collectively, the
+              &quot;Services&quot;), you agree to be bound by these Terms of
+              Service. If you do not agree, do not use the Services.
             </p>
           </section>
 
@@ -40,8 +40,8 @@ export default function TermsOfService() {
               Traceform provides infrastructure for computer-using agents,
               including tools for capturing trajectory data (screenshots, DOM
               state, and user actions), training environments, and evaluation
-              suites. The Glmpse application captures screen and interaction data
-              locally on your device.
+              suites. The Glmpse application captures screen and interaction
+              data locally on your device.
             </p>
           </section>
 
@@ -125,10 +125,10 @@ export default function TermsOfService() {
               8. Termination
             </h2>
             <p>
-              We may terminate or suspend your access to the Services at any time
-              for any reason, including violation of these Terms. Upon
-              termination, your right to use the Services ceases immediately. You
-              may export your data before termination.
+              We may terminate or suspend your access to the Services at any
+              time for any reason, including violation of these Terms. Upon
+              termination, your right to use the Services ceases immediately.
+              You may export your data before termination.
             </p>
           </section>
 
@@ -151,10 +151,10 @@ export default function TermsOfService() {
             <p>
               If you have questions about these Terms, please contact us at{" "}
               <a
-                href="mailto:contact@midcentury.xyz"
+                href="mailto:contact@traceform.xyz"
                 className="text-[#0D8FD9] hover:underline"
               >
-                contact@midcentury.xyz
+                contact@traceform.xyz
               </a>
               .
             </p>
