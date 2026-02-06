@@ -106,7 +106,7 @@ export function DownloadCTA() {
                 className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start"
               >
                 <a
-                  href="https://cua-platform.s3.us-east-1.amazonaws.com/Glmpse-darwin-arm64-1.0.0.zip"
+                  href="https://cua-platform.s3.us-east-1.amazonaws.com/Glmpse-stapled.zip"
                   download
                   className="group/btn inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-[#0D8FD9] to-[#3AAFFF] text-white font-semibold text-lg shadow-lg shadow-[#3AAFFF]/30 hover:shadow-xl hover:shadow-[#3AAFFF]/40 hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200"
                 >
