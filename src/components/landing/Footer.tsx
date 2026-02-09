@@ -6,8 +6,8 @@ export function Footer() {
   return (
     <footer className="group bg-slate-50 pt-20 pb-10 border-t border-slate-200 font-sans relative overflow-hidden">
       {/* Background Gradients - appear on hover */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#3AAFFF]/15 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out" />
-      <div className="absolute bottom-0 right-1/4 w-[600px] h-[200px] bg-blue-500/15 rounded-full blur-[80px] pointer-events-none translate-y-1/3 translate-x-1/3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out delay-75" />
+      <div className="absolute -top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#3AAFFF]/15 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out" />
+      <div className="absolute -bottom-1/4 right-1/4 w-[600px] h-[200px] bg-blue-500/15 rounded-full blur-[80px] pointer-events-none translate-y-1/3 translate-x-1/3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out delay-75" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-rose-500/15 rounded-full blur-[100px] pointer-events-none -translate-x-1/2 translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out delay-100" />
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-emerald-500/15 rounded-full blur-[100px] pointer-events-none translate-x-1/3 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out delay-150" />
 
