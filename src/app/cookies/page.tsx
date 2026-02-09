@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function CookiePolicy() {
   return (
-    <main className="min-h-screen bg-slate-50">
+    <main className="min-h-screen flex flex-col justify-between bg-slate-50">
       <MinimalNavbar />
       <div className="pt-32 pb-24 px-6 container mx-auto max-w-3xl">
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 font-display mb-4">
