@@ -5,8 +5,8 @@ import { Hero } from "@/components/landing/Hero";
 import { Process } from "@/components/landing/Process";
 import { Products } from "@/components/landing/Products";
 import { SocialProof } from "@/components/landing/SocialProof";
-import { Verticals } from "@/components/landing/Verticals";
 import { Navbar } from "@/components/layout/Navbar";
+import { UseCases } from "~/components/landing/UseCases";
 
 export default function Home() {
   return (
@@ -24,7 +24,7 @@ export default function Home() {
         <Products />
       </section>
       <section id="verticals">
-        <Verticals />
+        <UseCases />
       </section>
       <section id="download">
         <DownloadCTA />
