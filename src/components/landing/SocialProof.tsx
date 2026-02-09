@@ -37,12 +37,25 @@ const TeamCard = ({
   return (
     <figure
       className={cn(
-        "relative cursor-default overflow-hidden rounded-full py-2 px-4 transition-[transform,background-color,border-color,box-shadow] duration-150 ease-out",
+        "group relative cursor-default overflow-hidden rounded-full py-2 px-4 transition-all duration-200 ease-out",
         "border border-slate-200/60 bg-white/60 backdrop-blur-md",
-        "hover:bg-white hover:shadow-lg hover:shadow-[#3AAFFF]/10 hover:-translate-y-0.5 hover:border-[#3AAFFF]/30",
+        "hover:bg-white hover:shadow-md hover:-translate-y-0.5 hover:border-slate-200/80",
       )}
     >
-      <div className="flex flex-row items-center gap-3">
+      {/* Hover gradient overlay */}
+      <div
+        className={cn(
+          "absolute inset-0 bg-gradient-to-br via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none",
+          color === "blue" && "from-blue-500/10 to-blue-600/5",
+          color === "sky" && "from-sky-400/10 to-sky-600/5",
+          color === "emerald" && "from-emerald-400/10 to-emerald-600/5",
+          color === "slate" && "from-slate-300/10 to-slate-500/5",
+          color === "purple" && "from-purple-400/10 to-purple-600/5",
+          color === "cyan" && "from-cyan-400/10 to-cyan-600/5",
+          color === "orange" && "from-orange-400/10 to-orange-600/5",
+        )}
+      />
+      <div className="relative z-10 flex flex-row items-center gap-3">
         <div
           className={cn(
             "flex shrink-0 items-center justify-center w-8 h-8 rounded-full",
