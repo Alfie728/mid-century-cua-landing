@@ -10,14 +10,66 @@ import {
   HardDrives,
   Monitor,
 } from "@phosphor-icons/react";
-import { motion, useReducedMotion } from "motion/react";
+import {
+  motion,
+  useInView,
+  useMotionTemplate,
+  useReducedMotion,
+  useSpring,
+} from "motion/react";
 import Image from "next/image";
+import { useEffect, useEffectEvent, useRef } from "react";
 import {
   AnimatedSpan,
   Terminal,
   TypingAnimation,
 } from "@/components/ui/terminal";
 import { duration, easing, stagger } from "@/lib/animation";
+
+function CurvyUnderline() {
+  const ref = useRef<SVGSVGElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-300px" });
+  const shouldReduceMotion = useReducedMotion();
+
+  const clipPathValue = useSpring(shouldReduceMotion ? 0 : 100, {
+    bounce: 0,
+    duration: 800,
+  });
+  const clipPathTemplate = useMotionTemplate`inset(0px ${clipPathValue}% 0px 0px)`;
+
+  const onReveal = useEffectEvent(() => {
+    const timer = setTimeout(() => {
+      clipPathValue.set(0);
+    }, 200);
+    return () => clearTimeout(timer);
+  });
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: useEffectEvent handles dependencies
+  useEffect(() => {
+    if (isInView && !shouldReduceMotion) {
+      return onReveal();
+    }
+  }, [isInView, shouldReduceMotion]);
+
+  return (
+    <motion.svg
+      ref={ref}
+      className="absolute -bottom-2 left-0 w-full h-[10px] -z-10 overflow-visible"
+      viewBox="0 0 300 15"
+      fill="none"
+      preserveAspectRatio="none"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ clipPath: clipPathTemplate }}
+    >
+      <path
+        d="M0 6C15 2 25 2 37.5 6C50 10 60 10 75 6C90 2 100 2 112.5 6C125 10 135 10 150 6C165 2 175 2 187.5 6C200 10 210 10 225 6C240 2 250 2 262.5 6C275 10 285 10 300 6"
+        stroke="rgb(191 219 254 / 0.5)"
+        strokeWidth="5"
+        strokeLinecap="round"
+      />
+    </motion.svg>
+  );
+}
 
 export function Features() {
   const shouldReduceMotion = useReducedMotion();
@@ -67,7 +119,7 @@ export function Features() {
             can{" "}
             <strong className="text-slate-900 font-semibold relative inline-block">
               train, iterate, and measure
-              <span className="absolute bottom-0 left-0 w-full h-[6px] bg-blue-200/50 -z-10 rounded-full" />
+              <CurvyUnderline />
             </strong>{" "}
             like it's a real ML system.
           </motion.p>
