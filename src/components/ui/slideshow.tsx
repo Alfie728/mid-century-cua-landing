@@ -173,7 +173,7 @@ export function Slideshow({ items, collapseDelay = 5000 }: SlideshowProps) {
                 src={currentItem.image}
                 alt={currentItem.title}
                 fill
-                className="object-cover"
+                className="object-cover object-[50%_45%] "
                 sizes="(max-width: 768px) 100vw, 60vw"
                 priority
               />
