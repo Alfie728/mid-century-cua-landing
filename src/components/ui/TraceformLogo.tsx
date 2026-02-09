@@ -1,13 +1,16 @@
+import { useId } from "react";
 import { cn } from "@/lib/utils";
 
 export function TraceformLogo({ className }: { className?: string }) {
-  const id = "traceform-logo-" + Math.random().toString(36).substr(2, 9);
+  const id = useId();
   return (
     <svg
       viewBox="0 0 40 40"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={cn("size-10", className)}
+      aria-label="Traceform logo"
+      role="img"
     >
       <defs>
         <linearGradient
@@ -23,7 +26,7 @@ export function TraceformLogo({ className }: { className?: string }) {
         </linearGradient>
       </defs>
 
-      {/* Futuristic T Shape 
+      {/* Futuristic T Shape
           Concept: Sci-Fi Glyph.
           Sharp angles, aggressive taper.
       */}
@@ -33,11 +36,7 @@ export function TraceformLogo({ className }: { className?: string }) {
       />
 
       {/* Tech Accent / Cutout detail overlay */}
-      <path
-        d="M20 16 L22 32 H18 L20 16Z"
-        fill="#0F1012"
-        fillOpacity="0.3"
-      />
+      <path d="M20 16 L21 32 H19 L20 16Z" fill="#0F1012" fillOpacity="0.3" />
 
       {/* Top bevel highlight */}
       <path
@@ -45,7 +44,6 @@ export function TraceformLogo({ className }: { className?: string }) {
         fill="white"
         fillOpacity="0.5"
       />
-
     </svg>
   );
 }

@@ -37,14 +37,14 @@ export function Narrative() {
             </p>
             <p>
               Models are dropped into these environments and given concrete
-              objectives. Every action across the browser, terminal, and desktop is
-              captured and structured into training-ready trajectories.
+              objectives. Every action across the browser, terminal, and desktop
+              is captured and structured into training-ready trajectories.
             </p>
             <p>
-              Performance is evaluated based on task completion, correctness, and
-              efficiency. These evaluations become reward signals during training,
-              allowing models to learn how to reliably complete real-world work
-              end-to-end.
+              Performance is evaluated based on task completion, correctness,
+              and efficiency. These evaluations become reward signals during
+              training, allowing models to learn how to reliably complete
+              real-world work end-to-end.
             </p>
             <div className="pt-4 pb-2">
               <strong className="text-2xl md:text-3xl font-display font-bold text-slate-900 block leading-tight">

@@ -1,12 +1,12 @@
 "use client";
 
 import {
-  Robot,
   Buildings,
   Compass,
   Flask,
   Globe,
   Monitor,
+  Robot,
   TreeStructure,
 } from "@phosphor-icons/react";
 import { Marquee } from "@/components/ui/marquee";

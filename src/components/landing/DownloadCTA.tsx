@@ -1,6 +1,6 @@
 "use client";
 
-import { AppleLogo, DownloadSimple, Eye, Record } from "@phosphor-icons/react";
+import { AppleLogo, DownloadSimple, Record } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "motion/react";
 import { duration, easing, stagger } from "@/lib/animation";
 
@@ -195,9 +195,9 @@ export function DownloadCTA() {
                         { action: "click", target: "Submit button" },
                         { action: "type", target: "Search input" },
                         { action: "scroll", target: "Page down" },
-                      ].map((item, i) => (
+                      ].map((item) => (
                         <div
-                          key={i}
+                          key={item.target}
                           className="flex items-center justify-between text-xs py-1.5 border-b border-slate-50 last:border-0"
                         >
                           <span className="text-slate-600">{item.target}</span>

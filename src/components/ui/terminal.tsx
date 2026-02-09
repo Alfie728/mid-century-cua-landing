@@ -62,7 +62,13 @@ export const AnimatedSpan = ({
     if (sequence.activeIndex === itemIndex) {
       setHasStarted(true);
     }
-  }, [sequence?.activeIndex, sequence?.sequenceStarted, hasStarted, itemIndex]);
+  }, [
+    sequence?.activeIndex,
+    sequence?.sequenceStarted,
+    hasStarted,
+    itemIndex,
+    sequence,
+  ]);
 
   const shouldAnimate = sequence ? hasStarted : startOnView ? isInView : true;
 
@@ -132,7 +138,7 @@ export const TypingAnimation = ({
   const [displayedText, setDisplayedText] = useState<string>(
     shouldReduceMotion ? children : "",
   );
-  const [started, setStarted] = useState(shouldReduceMotion ? true : false);
+  const [started, setStarted] = useState(!!shouldReduceMotion);
   const elementRef = useRef<HTMLElement | null>(null);
   const isInView = useInView(elementRef as React.RefObject<Element>, {
     amount: 0.3,
@@ -172,6 +178,7 @@ export const TypingAnimation = ({
     sequence?.sequenceStarted,
     itemIndex,
     shouldReduceMotion,
+    sequence,
   ]);
 
   useEffect(() => {
@@ -193,7 +200,14 @@ export const TypingAnimation = ({
     return () => {
       clearInterval(typingEffect);
     };
-  }, [children, typingDuration, started, shouldReduceMotion]);
+  }, [
+    children,
+    typingDuration,
+    started,
+    shouldReduceMotion,
+    itemIndex,
+    sequence,
+  ]);
 
   return (
     <MotionComponent
@@ -244,11 +258,15 @@ export const Terminal = ({
   const wrappedChildren = useMemo(() => {
     if (!sequence) return children;
     const array = Children.toArray(children);
-    return array.map((child, index) => (
-      <ItemIndexContext.Provider key={index} value={index}>
-        {child as React.ReactNode}
-      </ItemIndexContext.Provider>
-    ));
+    return array.map((child, index) => {
+      const key =
+        (child as React.ReactElement)?.key ?? `item-${index.toString()}`;
+      return (
+        <ItemIndexContext.Provider key={key} value={index}>
+          {child as React.ReactNode}
+        </ItemIndexContext.Provider>
+      );
+    });
   }, [children, sequence]);
 
   const content = (

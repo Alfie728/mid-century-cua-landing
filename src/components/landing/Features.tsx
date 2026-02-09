@@ -8,18 +8,16 @@ import {
   Database,
   Flask,
   HardDrives,
-  Lock,
   Monitor,
 } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
-import { duration, easing, stagger } from "@/lib/animation";
-import { accentColors } from "@/lib/colors";
 import {
   AnimatedSpan,
   Terminal,
   TypingAnimation,
 } from "@/components/ui/terminal";
+import { duration, easing, stagger } from "@/lib/animation";
 
 export function Features() {
   const shouldReduceMotion = useReducedMotion();

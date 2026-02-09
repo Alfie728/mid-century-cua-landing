@@ -1,12 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { TraceformLogo } from "@/components/ui/TraceformLogo";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { TraceformLogo } from "@/components/ui/TraceformLogo";
 import { cn } from "@/lib/utils";
-import { div, header } from "motion/react-client";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -73,12 +71,12 @@ export function Navbar() {
           style={
             scrolled
               ? {
-                background: "rgba(243, 243, 243, 0.22)",
-                boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-                backdropFilter: "blur(6px)",
-                WebkitBackdropFilter: "blur(6px)",
-                border: "1px solid rgba(243, 243, 243, 0.36)",
-              }
+                  background: "rgba(243, 243, 243, 0.22)",
+                  boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+                  backdropFilter: "blur(6px)",
+                  WebkitBackdropFilter: "blur(6px)",
+                  border: "1px solid rgba(243, 243, 243, 0.36)",
+                }
               : undefined
           }
         >
@@ -87,9 +85,7 @@ export function Navbar() {
             <div
               className={cn(
                 "relative flex items-center justify-center size-10 rounded-xl transition-all duration-200 ease motion-reduce:transition-none",
-                scrolled
-                  ? "bg-transparent"
-                  : "bg-transparent",
+                scrolled ? "bg-transparent" : "bg-transparent",
               )}
             >
               <TraceformLogo className="size-full" />
@@ -151,7 +147,7 @@ export function Navbar() {
             </Link>
           </div>
         </div>
-      </div >
-    </header >
+      </div>
+    </header>
   );
 }

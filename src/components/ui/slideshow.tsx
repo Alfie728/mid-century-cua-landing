@@ -1,12 +1,17 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
-import { motion, AnimatePresence, useInView, useReducedMotion } from "motion/react";
-import Image from "next/image";
-import { cn } from "@/lib/utils";
-import { easing } from "@/lib/animation";
-import { accentColors, type AccentColor } from "@/lib/colors";
 import type { Icon } from "@phosphor-icons/react";
+import {
+  AnimatePresence,
+  motion,
+  useInView,
+  useReducedMotion,
+} from "motion/react";
+import Image from "next/image";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { easing } from "@/lib/animation";
+import { type AccentColor, accentColors } from "@/lib/colors";
+import { cn } from "@/lib/utils";
 
 export type SlideItem = {
   id: string;
@@ -57,7 +62,10 @@ export function Slideshow({ items, collapseDelay = 5000 }: SlideshowProps) {
   const currentItem = currentIndex >= 0 ? items[currentIndex] : items[0];
 
   return (
-    <div ref={containerRef} className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
+    <div
+      ref={containerRef}
+      className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center"
+    >
       {/* Left side - Accordion */}
       <div className="lg:col-span-2 flex flex-col gap-3">
         {items.map((item, index) => {
@@ -74,7 +82,7 @@ export function Slideshow({ items, collapseDelay = 5000 }: SlideshowProps) {
                 "relative text-left p-6 rounded-[1.5rem] transition-all duration-200 cursor-pointer group border",
                 isActive
                   ? "bg-white/80 backdrop-blur-md border-slate-200/80 shadow-lg"
-                  : "bg-white/40 border-transparent hover:bg-white/60 hover:border-slate-200/50"
+                  : "bg-white/40 border-transparent hover:bg-white/60 hover:border-slate-200/50",
               )}
             >
               {/* Gradient overlay on hover/active */}
@@ -82,7 +90,7 @@ export function Slideshow({ items, collapseDelay = 5000 }: SlideshowProps) {
                 className={cn(
                   "absolute inset-0 rounded-[1.5rem] bg-gradient-to-br opacity-0 transition-opacity duration-200 pointer-events-none",
                   isActive ? "opacity-100" : "group-hover:opacity-50",
-                  colors.gradient
+                  colors.gradient,
                 )}
               />
 
@@ -94,7 +102,7 @@ export function Slideshow({ items, collapseDelay = 5000 }: SlideshowProps) {
                       "w-11 h-11 rounded-xl flex items-center justify-center border transition-all duration-200",
                       isActive
                         ? `${colors.bg} border-transparent text-white`
-                        : `bg-white border-slate-200 ${colors.text}`
+                        : `bg-white border-slate-200 ${colors.text}`,
                     )}
                   >
                     <IconComponent weight="duotone" className="w-5 h-5" />
@@ -102,7 +110,9 @@ export function Slideshow({ items, collapseDelay = 5000 }: SlideshowProps) {
                   <h3
                     className={cn(
                       "text-lg font-semibold font-display tracking-tight transition-colors duration-200",
-                      isActive ? "text-slate-900" : "text-slate-600 group-hover:text-slate-800"
+                      isActive
+                        ? "text-slate-900"
+                        : "text-slate-600 group-hover:text-slate-800",
                     )}
                   >
                     {item.title}
@@ -132,10 +142,12 @@ export function Slideshow({ items, collapseDelay = 5000 }: SlideshowProps) {
                     className={cn(
                       "h-full rounded-full transition-all ease-linear",
                       colors.bg,
-                      isActive ? "w-full" : "w-0"
+                      isActive ? "w-full" : "w-0",
                     )}
                     style={{
-                      transitionDuration: isActive ? `${collapseDelay}ms` : "0ms",
+                      transitionDuration: isActive
+                        ? `${collapseDelay}ms`
+                        : "0ms",
                     }}
                   />
                 </div>

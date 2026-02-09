@@ -57,6 +57,7 @@ function TrainingGraph() {
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
         style={{ clipPath: clipPathTemplate }}
+        aria-hidden="true"
       >
         <defs>
           {/* Using Tailwind emerald-500 equivalent */}

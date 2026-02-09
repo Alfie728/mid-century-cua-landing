@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, PlayCircle } from "@phosphor-icons/react";
+import { ArrowRight } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 import { LightRays } from "@/components/ui/light-rays";
